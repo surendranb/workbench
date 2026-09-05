@@ -1,0 +1,383 @@
+/*
+Theme Name: Workbench
+Theme URI: https://builditwithai.xyz
+Author: Surendran B
+Author URI: https://surendranb.com
+Description: A two-column showcase shell for builders — fixed secondary nav, page-list sidebar, filterable work index, project notes card, palette & typography style variations. Built with WordPress primitives only.
+Version: 1.0.0
+Requires at least: 6.5
+Tested up to: 7.1
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: workbench
+Tags: blog, two-columns, right-sidebar, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-themes, wide-blocks
+*/
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+/* Header nav: muted links, current page dark (reference treatment).
+   Double-class selector matches WP core's own hardened (0,3,0) color rule. */
+.bai-header > * {
+	width: 100%;
+}
+.bai-header a {
+	text-decoration: none;
+}
+.bai-header .wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content {
+	color: var(--wp--preset--color--muted);
+}
+.bai-header .wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content[aria-current="page"] {
+	color: var(--wp--preset--color--ink);
+}
+.bai-header .wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content:hover {
+	color: var(--wp--preset--color--accent);
+}
+
+/* Sidebar inner: vertical flex, nav scrolls */
+.bai-sidebar {
+	box-sizing: border-box;
+	height: 100%;
+	overflow: hidden;
+}
+.bai-side-head,
+.bai-side-foot {
+	flex-shrink: 0;
+}
+/* No tagline configured → drop the head band entirely
+   (core/site-tagline may render nothing at all, so guard on absence too) */
+.bai-side-head:has(.wp-block-site-tagline:empty),
+.bai-side-head:not(:has(.wp-block-site-tagline)) {
+	display: none;
+}
+.bai-side-nav {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	padding: 16px 14px 24px;
+	box-sizing: border-box;
+}
+.bai-side-nav::-webkit-scrollbar {
+	width: 5px;
+}
+.bai-side-nav::-webkit-scrollbar-thumb {
+	background: var(--wp--preset--color--border);
+	border-radius: 4px;
+}
+
+/* Filter box ("Search {site}") — padding-based: immune to core margin resets */
+.bai-side-filter {
+	flex-shrink: 0;
+	padding: 12px 20px;
+	border-bottom: 1px solid var(--wp--preset--color--hairline);
+	box-sizing: border-box;
+	background: var(--wp--preset--color--surface);
+}
+.bai-filter {
+	width: 100%;
+	padding: 9px 12px;
+	border: 1px solid color-mix(in srgb, var(--wp--preset--color--faint) 55%, transparent);
+	border-radius: 8px;
+	font-size: 13px;
+	font-family: inherit;
+	outline: none;
+	background: var(--wp--preset--color--page);
+	color: var(--wp--preset--color--body);
+	transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+	box-sizing: border-box;
+}
+.bai-filter:focus {
+	border-color: var(--wp--preset--color--accent);
+	background: var(--wp--preset--color--surface);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--wp--preset--color--accent) 12%, transparent);
+}
+.bai-filter::placeholder {
+	color: var(--wp--preset--color--faint);
+}
+
+/* Nav items */
+.bai-nav-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.bai-nav-item {
+	border: 1px solid transparent;
+	border-radius: 8px;
+	padding: 11px 12px !important;
+	transition: background 0.15s ease, border-color 0.15s ease;
+	box-sizing: border-box;
+}
+.bai-nav-item:hover {
+	background: var(--wp--preset--color--page);
+	border-color: var(--wp--preset--color--border);
+}
+.bai-nav-list li.is-active > .bai-nav-item,
+.bai-nav-item.is-active {
+	background: var(--wp--preset--color--page);
+	border-color: var(--wp--preset--color--border);
+}
+.bai-nav-list li.is-active > .bai-nav-item:hover {
+	background: var(--wp--preset--color--page);
+	border-color: var(--wp--preset--color--border);
+}
+.bai-nav-item .wp-block-post-title {
+	margin: 0;
+}
+.bai-nav-item .wp-block-post-title a {
+	color: var(--wp--preset--color--title);
+	text-decoration: none;
+	display: block;
+}
+.bai-nav-list li.is-active .wp-block-post-title a {
+	color: var(--wp--preset--color--ink);
+}
+.bai-nav-item .wp-block-post-excerpt {
+	margin: 4px 0 0;
+}
+.bai-nav-item .wp-block-post-excerpt p {
+	margin: 0;
+	font-size: 11px;
+	line-height: 1.35;
+	color: var(--wp--preset--color--muted);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.bai-nav-list li.is-active .wp-block-post-excerpt p {
+	color: var(--wp--preset--color--muted);
+}
+
+/* Whole row is the touch target: link box expands to fill the card */
+.bai-nav-item .wp-block-post-title a {
+	margin: -11px -12px;
+	padding: 11px 12px;
+}
+
+/* Sidebar bottom bar */
+.bai-side-foot p {
+	margin: 0;
+}
+
+/* ==========================================================================
+   Content area
+   ========================================================================== */
+.bai-content {
+	box-sizing: border-box;
+	min-height: calc(100vh - var(--wb-header-h));
+}
+
+/* Kicker with live dot */
+.bai-kicker::before {
+	content: "";
+	display: inline-block;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--wp--preset--color--live);
+	margin-right: 8px;
+	vertical-align: 1px;
+}
+
+/* Narrative block: hairline top rule */
+.bai-narrative {
+	border-top: 1px solid var(--wp--preset--color--border);
+	padding-top: 32px;
+}
+
+/* ==========================================================================
+   Project notes card (inserted from pattern on project pages)
+   ========================================================================== */
+.bai-notes-card .bai-notes-heading {
+	font-size: 11px;
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--wp--preset--color--muted);
+	margin: 0 0 16px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid var(--wp--preset--color--hairline);
+}
+.bai-notes-card .bai-built-label {
+	font-size: 12px;
+	font-weight: 700;
+	color: var(--wp--preset--color--title);
+	margin: 0 0 8px;
+}
+.bai-tech-pills p {
+	margin: 0 0 24px;
+}
+.bai-tech-pill {
+	display: inline-block;
+	font-family: var(--wp--preset--font-family--mono);
+	font-size: 11px;
+	background: var(--wp--preset--color--hairline);
+	color: var(--wp--preset--color--lede);
+	padding: 4px 8px;
+	border-radius: 5px;
+	font-weight: 600;
+	margin: 0 4px 4px 0;
+}
+.bai-notes-actions {
+	border-top: 1px solid var(--wp--preset--color--hairline);
+	padding-top: 18px;
+}
+.bai-notes-card .wp-block-button__link {
+	width: 100%;
+	box-sizing: border-box;
+	justify-content: space-between;
+	display: flex;
+}
+.bai-notes-card .wp-block-button.is-style-outline .wp-block-button__link {
+	background: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--title);
+	border: 1px solid color-mix(in srgb, var(--wp--preset--color--faint) 55%, transparent);
+	font-size: 12px;
+	font-weight: 600;
+	padding: 10px 14px;
+}
+.bai-notes-card .wp-block-button.is-style-outline .wp-block-button__link:hover {
+	background: var(--wp--preset--color--page);
+}
+.bai-notes-card .wp-block-button:not(:last-child) {
+	margin-bottom: 10px;
+}
+.bai-notes-tertiary a {
+	font-size: 12px;
+	font-weight: 600;
+	text-decoration: none;
+}
+.bai-notes-tertiary a:hover {
+	text-decoration: underline;
+}
+
+/* ==========================================================================
+   Project detail grid: body + sticky notes card
+   ========================================================================== */
+.bai-detail-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 300px;
+	gap: 56px;
+	align-items: start;
+}
+.bai-detail-main {
+	min-width: 0;
+}
+.bai-notes-card {
+	position: sticky;
+	top: calc(var(--wb-header-h) + 24px);
+	box-shadow: 0 4px 12px color-mix(in srgb, var(--wp--preset--color--ink) 3%, transparent);
+}
+
+/* Chip row (tags/filters inside content) — gallery-borrowed pill language */
+.bai-chip-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.bai-chip-row .bai-tech-pill {
+	margin: 0;
+}
+
+/* ==========================================================================
+   Project sub-navigation bar ([workbench_project_nav])
+   ========================================================================== */
+.bai-project-nav {
+	margin: 12px 0 32px 0;
+	border-bottom: 1px solid var(--wp--preset--color--hairline);
+}
+.bai-project-nav-tabs {
+	display: flex;
+	gap: 28px;
+	align-items: center;
+	margin-bottom: -1px;
+	flex-wrap: wrap;
+}
+.bai-project-nav-item {
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 0 12px 0;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--wp--preset--color--muted);
+	text-decoration: none;
+	border-bottom: 2px solid transparent;
+	transition: color 0.15s ease, border-color 0.15s ease;
+}
+.bai-project-nav-item:hover {
+	color: var(--wp--preset--color--title);
+}
+.bai-project-nav-item.is-active {
+	color: var(--wp--preset--color--title);
+	border-bottom-color: var(--wp--preset--color--title);
+}
+.bai-project-nav-item.bai-nav-ext {
+	color: var(--wp--preset--color--faint);
+}
+.bai-project-nav-item.bai-nav-ext:hover {
+	color: var(--wp--preset--color--title);
+}
+
+/* ==========================================================================
+   Focus + selection (browser chrome, themed)
+   ========================================================================== */
+:focus-visible {
+	outline: 2px solid var(--wp--preset--color--accent);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+::selection {
+	background: color-mix(in srgb, var(--wp--preset--color--accent) 16%, transparent);
+}
+
+
+/* ==========================================================================
+   Project page notes rail (rendered via [workbench_notes_card])
+   ========================================================================== */
+.bai-notes-card .wp-block-buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.bai-notes-card .wp-block-button__link {
+	width: 100%;
+	box-sizing: border-box;
+	justify-content: space-between;
+	display: flex;
+}
+.bai-notes-card .wp-block-button.is-style-outline .wp-block-button__link {
+	background: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--title);
+	border: 1px solid color-mix(in srgb, var(--wp--preset--color--faint) 55%, transparent);
+	font-size: 12px;
+	font-weight: 600;
+	padding: 10px 14px;
+}
+.bai-notes-card .wp-block-button.is-style-outline .wp-block-button__link:hover {
+	background: var(--wp--preset--color--page);
+}
+.bai-notes-foot {
+	font-size: 11px;
+	line-height: 1.5;
+	color: var(--wp--preset--color--faint);
+	border-top: 1px solid var(--wp--preset--color--hairline);
+	padding-top: 14px;
+	margin: 16px 0 0 !important;
+}
+
+/* Sidebar: whole card is the click target, not just the title text */
+.bai-nav-item {
+	position: relative;
+}
+.bai-nav-item .wp-block-post-title a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+
+

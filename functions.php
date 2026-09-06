@@ -362,6 +362,9 @@ function is_template_assigned( string $slug ) : bool {
 if ( file_exists( __DIR__ . '/inc/newsletter.php' ) ) {
 	require_once __DIR__ . '/inc/newsletter.php';
 }
+if ( file_exists( __DIR__ . '/inc/palettes.php' ) ) {
+	require_once __DIR__ . '/inc/palettes.php';
+}
 if ( file_exists( __DIR__ . '/inc/homepage.php' ) ) {
 	require_once __DIR__ . '/inc/homepage.php';
 }

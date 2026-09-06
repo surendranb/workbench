@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Studio Electric",
+	"description": "Modernist graphic laboratory: warm vintage cream canvas, sunlight biscuit rail, deep modernist navy ink, electric hot pink accent, luminous teal secondary, and Bricolage Grotesque expressive typography.",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "page", "color": "#fef6e4", "name": "Studio Cream Canvas" },
+				{ "slug": "ink", "color": "#001858", "name": "Studio Deep Navy" },
+				{ "slug": "accent", "color": "#f582ae", "name": "Studio Electric Pink" },
+				{ "slug": "secondary", "color": "#008b99", "name": "Studio Luminous Teal" },
+				{ "slug": "sidebar", "color": "#f4e5c2", "name": "Sunlight Biscuit Rail" },
+				{ "slug": "surface", "color": "#ffffff", "name": "Pure White Surface" },
+				{ "slug": "title", "color": "#001858", "name": "Studio Deep Navy Title" },
+				{ "slug": "body", "color": "#172c69", "name": "Rich Studio Navy Body" },
+				{ "slug": "lede", "color": "#263f82", "name": "Studio Navy Lede" },
+				{ "slug": "muted", "color": "#52669e", "name": "Studio Navy Muted" },
+				{ "slug": "faint", "color": "#8898c7", "name": "Faint" },
+				{ "slug": "border", "color": "#decba4", "name": "Warm Cream Border" },
+				{ "slug": "hairline", "color": "#ebdcc0", "name": "Hairline" },
+				{ "slug": "accent-strong", "color": "#db2777", "name": "Accent Strong" },
+				{ "slug": "accent-wash", "color": "#fdf2f6", "name": "Pink Accent Wash" },
+				{ "slug": "accent-border", "color": "#fbcfe8", "name": "Pink Accent Border" },
+				{ "slug": "accent-text", "color": "#9d174d", "name": "Pink Accent Text" },
+				{ "slug": "secondary-wash", "color": "#e6f9fa", "name": "Teal Wash" },
+				{ "slug": "secondary-border", "color": "#a3eaee", "name": "Teal Border" },
+				{ "slug": "secondary-text", "color": "#00636d", "name": "Teal Text" },
+				{ "slug": "live", "color": "#008b99", "name": "Live Indicator" }
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--page)",
+			"text": "var(--wp--preset--color--body)"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--bricolage-grotesque)",
+					"fontWeight": "750",
+					"letterSpacing": "-0.035em"
+				},
+				"color": { "text": "var(--wp--preset--color--ink)" }
+			},
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--accent)",
+					"text": "#001858"
+				},
+				":hover": {
+					"color": {
+						"background": "var(--wp--preset--color--accent-strong)",
+						"text": "#ffffff"
+					}
+				}
+			},
+			"link": {
+				"color": { "text": "var(--wp--preset--color--secondary)" },
+				":hover": {
+					"color": { "text": "var(--wp--preset--color--accent)" }
+				}
+			}
+		}
+	}
+}

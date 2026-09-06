@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Terracotta Sun",
+	"description": "Archival field journal: warm toasted sand canvas, sun-baked clay rail, deep umber espresso ink, scorched vermillion rust accent, and Newsreader editorial serif typography.",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "page", "color": "#faf5ef", "name": "Toasted Sand Canvas" },
+				{ "slug": "ink", "color": "#1c130d", "name": "Deep Espresso Umber Ink" },
+				{ "slug": "accent", "color": "#c2410c", "name": "Scorched Vermillion Rust" },
+				{ "slug": "secondary", "color": "#3f5a45", "name": "Canopy Sage Olive" },
+				{ "slug": "sidebar", "color": "#ede3d4", "name": "Warm Clay Rail" },
+				{ "slug": "surface", "color": "#ffffff", "name": "Pure White Surface" },
+				{ "slug": "title", "color": "#1c130d", "name": "Espresso Title" },
+				{ "slug": "body", "color": "#382b22", "name": "Rich Earth Bark Body" },
+				{ "slug": "lede", "color": "#524035", "name": "Earth Lede" },
+				{ "slug": "muted", "color": "#786558", "name": "Earth Muted" },
+				{ "slug": "faint", "color": "#a69588", "name": "Faint" },
+				{ "slug": "border", "color": "#decbb7", "name": "Sandstone Border" },
+				{ "slug": "hairline", "color": "#ede2d4", "name": "Hairline" },
+				{ "slug": "accent-strong", "color": "#9a3412", "name": "Accent Strong" },
+				{ "slug": "accent-wash", "color": "#fff7ed", "name": "Rust Wash" },
+				{ "slug": "accent-border", "color": "#fed7aa", "name": "Rust Border" },
+				{ "slug": "accent-text", "color": "#9a3412", "name": "Rust Text" },
+				{ "slug": "secondary-wash", "color": "#f4f7f4", "name": "Sage Wash" },
+				{ "slug": "secondary-border", "color": "#c8d9cb", "name": "Sage Border" },
+				{ "slug": "secondary-text", "color": "#2c4031", "name": "Sage Text" },
+				{ "slug": "live", "color": "#c2410c", "name": "Live Indicator" }
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--page)",
+			"text": "var(--wp--preset--color--body)"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--display)",
+					"fontWeight": "700",
+					"letterSpacing": "-0.02em"
+				},
+				"color": { "text": "var(--wp--preset--color--ink)" }
+			},
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--accent)",
+					"text": "#ffffff"
+				},
+				":hover": {
+					"color": {
+						"background": "var(--wp--preset--color--accent-strong)",
+						"text": "#ffffff"
+					}
+				}
+			},
+			"link": {
+				"color": { "text": "var(--wp--preset--color--secondary)" },
+				":hover": {
+					"color": { "text": "var(--wp--preset--color--accent)" }
+				}
+			}
+		}
+	}
+}

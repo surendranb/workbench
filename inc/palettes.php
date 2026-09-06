@@ -20,12 +20,63 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 	if ( ! $palette_slug ) {
 		$palette_slug = ! empty( $_GET['palette'] ) 
 			? sanitize_key( $_GET['palette'] ) 
-			: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'coastal-dusk' );
+			: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'cobalt-precision' );
 	}
+
+	$legacy_map = array(
+		'coastal-dusk'   => 'cobalt-precision',
+		'granite-ridge'  => 'cobalt-precision',
+		'deccan-basalt'  => 'cobalt-precision',
+		'chettinad-teak' => 'terracotta-sun',
+		'laterite-mist'  => 'terracotta-sun',
+		'monsoon-canopy' => 'nordic-pine',
+		'chaparral-dusk' => 'nordic-pine',
+		'rann-mirage'    => 'drafting-blueprint',
+		'happy-hues'     => 'studio-electric',
+	);
+	if ( isset( $legacy_map[ $palette_slug ] ) ) {
+		$palette_slug = $legacy_map[ $palette_slug ];
+	}
+
+	$font_map = array(
+		'cobalt-precision'   => array(
+			'family'  => "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+			'weight'  => '750',
+			'spacing' => '-0.035em',
+			'kicker'  => 'normal',
+		),
+		'terracotta-sun'     => array(
+			'family'  => "'Newsreader', 'Iowan Old Style', Georgia, serif",
+			'weight'  => '700',
+			'spacing' => '-0.02em',
+			'kicker'  => 'italic',
+		),
+		'nordic-pine'        => array(
+			'family'  => "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+			'weight'  => '700',
+			'spacing' => '-0.03em',
+			'kicker'  => 'normal',
+		),
+		'drafting-blueprint' => array(
+			'family'  => "'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif",
+			'weight'  => '700',
+			'spacing' => '-0.03em',
+			'kicker'  => 'normal',
+		),
+		'studio-electric'    => array(
+			'family'  => "'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif",
+			'weight'  => '800',
+			'spacing' => '-0.035em',
+			'kicker'  => 'normal',
+		),
+	);
+
+	$font_cfg = isset( $font_map[ $palette_slug ] ) ? $font_map[ $palette_slug ] : $font_map['cobalt-precision'];
 
 	$file = get_stylesheet_directory() . "/styles/{$palette_slug}.json";
 	if ( ! file_exists( $file ) ) {
-		$file = get_stylesheet_directory() . "/styles/coastal-dusk.json";
+		$palette_slug = 'cobalt-precision';
+		$file = get_stylesheet_directory() . "/styles/cobalt-precision.json";
 		if ( ! file_exists( $file ) ) {
 			return '';
 		}
@@ -42,6 +93,9 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 		$val  = esc_attr( $col['color'] );
 		$css .= "  --wp--preset--color--{$slug}: {$val} !important;\n";
 	}
+	$css .= "  --wb-font-heading: {$font_cfg['family']} !important;\n";
+	$css .= "  --wb-heading-weight: {$font_cfg['weight']} !important;\n";
+	$css .= "  --wb-heading-spacing: {$font_cfg['spacing']} !important;\n";
 	$css .= "}\n";
 	$css .= '
 	/* Structural Contrast & Atmosphere Engine */
@@ -50,15 +104,17 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 		color: var(--wp--preset--color--body) !important; 
 	}
 	h1, .wp-block-post-title {
+		font-family: var(--wb-font-heading) !important;
 		color: var(--wp--preset--color--ink) !important;
-		font-weight: 750 !important;
-		letter-spacing: -0.035em !important;
+		font-weight: var(--wb-heading-weight) !important;
+		letter-spacing: var(--wb-heading-spacing) !important;
 		line-height: 1.1 !important;
 	}
 	h2, h3, h4 {
+		font-family: var(--wb-font-heading) !important;
 		color: var(--wp--preset--color--title) !important;
-		font-weight: 700 !important;
-		letter-spacing: -0.02em !important;
+		font-weight: var(--wb-heading-weight) !important;
+		letter-spacing: var(--wb-heading-spacing) !important;
 		line-height: 1.25 !important;
 	}
 	p {
@@ -87,8 +143,10 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 		border-bottom: 1px solid var(--wp--preset--color--border) !important;
 	}
 	.bai-header .wp-block-site-title a {
+		font-family: var(--wb-font-heading) !important;
 		color: var(--wp--preset--color--ink) !important;
-		font-weight: 900 !important;
+		font-weight: 850 !important;
+		letter-spacing: var(--wb-heading-spacing) !important;
 	}
 	.bai-header .wp-block-navigation .wp-block-navigation-item__content {
 		color: var(--wp--preset--color--muted) !important;
@@ -318,28 +376,41 @@ add_action( 'wp_footer', function () {
 
 	$current = ! empty( $_GET['palette'] ) 
 		? sanitize_key( $_GET['palette'] ) 
-		: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'coastal-dusk' );
+		: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'cobalt-precision' );
+
+	$legacy_map = array(
+		'coastal-dusk'   => 'cobalt-precision',
+		'granite-ridge'  => 'cobalt-precision',
+		'deccan-basalt'  => 'cobalt-precision',
+		'chettinad-teak' => 'terracotta-sun',
+		'laterite-mist'  => 'terracotta-sun',
+		'monsoon-canopy' => 'nordic-pine',
+		'chaparral-dusk' => 'nordic-pine',
+		'rann-mirage'    => 'drafting-blueprint',
+		'happy-hues'     => 'studio-electric',
+	);
+	if ( isset( $legacy_map[ $current ] ) ) {
+		$current = $legacy_map[ $current ];
+	}
 
 	$palettes = array(
-		'coastal-dusk'    => 'Coastal Dusk',
-		'laterite-mist'   => 'Laterite Mist',
-		'chaparral-dusk'  => 'Chaparral Dusk',
-		'granite-ridge'   => 'Granite Ridge',
-		'monsoon-canopy'  => 'Monsoon Canopy',
-		'deccan-basalt'   => 'Deccan Basalt',
-		'rann-mirage'     => 'Rann Mirage',
-		'chettinad-teak'  => 'Chettinad Teak',
-		'happy-hues'      => 'Happy Hues #17',
+		'cobalt-precision'   => array( 'name' => 'Cobalt Precision', 'font' => 'Geist', 'dot' => '#2563eb' ),
+		'terracotta-sun'     => array( 'name' => 'Terracotta Sun',   'font' => 'Newsreader', 'dot' => '#c2410c' ),
+		'nordic-pine'        => array( 'name' => 'Nordic Pine',      'font' => 'Geist', 'dot' => '#0d7e5d' ),
+		'drafting-blueprint' => array( 'name' => 'Drafting Blueprint', 'font' => 'Space Grotesk', 'dot' => '#ea580c' ),
+		'studio-electric'    => array( 'name' => 'Studio Electric',  'font' => 'Bricolage', 'dot' => '#f582ae' ),
 	);
 	?>
-	<div class="wb-palette-switcher" style="position:fixed;bottom:16px;right:16px;z-index:9999;display:flex;align-items:center;gap:6px;background:rgba(12,27,38,0.92);backdrop-filter:blur(10px);padding:6px 12px;border-radius:30px;font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;color:#ffffff;box-shadow:0 4px 16px rgba(0,0,0,0.22);border:1px solid rgba(255,255,255,0.15);">
-		<span style="opacity:0.65;letter-spacing:0.04em;text-transform:uppercase;font-size:9px;padding-right:2px">Essence:</span>
-		<?php foreach ( $palettes as $slug => $label ) : 
+	<div class="wb-palette-switcher" style="position:fixed;bottom:16px;right:16px;z-index:9999;display:flex;align-items:center;gap:6px;background:rgba(9,17,30,0.94);backdrop-filter:blur(12px);padding:6px 12px;border-radius:30px;font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;color:#ffffff;box-shadow:0 6px 20px rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.18);max-width:calc(100vw - 32px);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;">
+		<span style="opacity:0.75;letter-spacing:0.04em;text-transform:uppercase;font-size:9px;padding-right:4px;flex-shrink:0;">World:</span>
+		<?php foreach ( $palettes as $slug => $meta ) : 
 			$is_active = ( $current === $slug );
 			$url = add_query_arg( 'palette', $slug );
 		?>
-			<a href="<?php echo esc_url( $url ); ?>" style="text-decoration:none;padding:4px 9px;border-radius:12px;transition:all 0.15s ease;<?php echo $is_active ? 'background:#ffffff;color:#0c1b26;font-weight:750;box-shadow:0 1px 3px rgba(0,0,0,0.15);' : 'color:#ffffff;opacity:0.85;'; ?>">
-				<?php echo esc_html( $label ); ?>
+			<a href="<?php echo esc_url( $url ); ?>" style="text-decoration:none;display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:14px;transition:all 0.15s ease;flex-shrink:0;<?php echo $is_active ? 'background:#ffffff;color:#09111e;font-weight:750;box-shadow:0 1px 4px rgba(0,0,0,0.2);' : 'color:#ffffff;opacity:0.85;'; ?>">
+				<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:<?php echo esc_attr( $meta['dot'] ); ?>;"></span>
+				<span><?php echo esc_html( $meta['name'] ); ?></span>
+				<span style="font-size:9.5px;opacity:0.75;background:rgba(128,128,128,0.25);padding:1px 5px;border-radius:4px;"><?php echo esc_html( $meta['font'] ); ?></span>
 			</a>
 		<?php endforeach; ?>
 	</div>

@@ -77,6 +77,51 @@
 					]
 				},
 				{
+					"slug": "geist",
+					"name": "Geist",
+					"fontFamily": "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Geist",
+							"fontWeight": "100 900",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"fontDisplay": "swap",
+							"src": ["file:./assets/fonts/geist-latin.woff2"]
+						}
+					]
+				},
+				{
+					"slug": "space-grotesk",
+					"name": "Space Grotesk",
+					"fontFamily": "'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Space Grotesk",
+							"fontWeight": "300 700",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"fontDisplay": "swap",
+							"src": ["file:./assets/fonts/space-grotesk-latin.woff2"]
+						}
+					]
+				},
+				{
+					"slug": "bricolage-grotesque",
+					"name": "Bricolage Grotesque",
+					"fontFamily": "'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Bricolage Grotesque",
+							"fontWeight": "200 800",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"fontDisplay": "swap",
+							"src": ["file:./assets/fonts/bricolage-grotesque-latin.woff2"]
+						}
+					]
+				},
+				{
 					"slug": "mono",
 					"name": "Mono",
 					"fontFamily": "ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace"

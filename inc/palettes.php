@@ -20,7 +20,7 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 	if ( ! $palette_slug ) {
 		$palette_slug = ! empty( $_GET['palette'] ) 
 			? sanitize_key( $_GET['palette'] ) 
-			: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'cobalt-precision' );
+			: 'studio-electric';
 	}
 
 	$legacy_map = array(
@@ -223,9 +223,9 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 	/* Buttons & Tactile Feedback */
 	.wp-block-button:not(.is-style-outline) .wp-block-button__link, .bai-newsletter-btn {
 		background-color: var(--wp--preset--color--accent) !important;
-		color: #ffffff !important;
+		color: var(--wp--preset--color--ink, #001858) !important;
 		border: 1px solid var(--wp--preset--color--accent) !important;
-		font-weight: 700 !important;
+		font-weight: 800 !important;
 		letter-spacing: -0.01em !important;
 		border-radius: 8px !important;
 		box-shadow: 
@@ -365,54 +365,3 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 add_action( 'wp_head', function () {
 	echo workbench_get_palette_css();
 }, 5 );
-
-/**
- * Floating palette quick-switcher on localhost.
- */
-add_action( 'wp_footer', function () {
-	if ( is_admin() ) {
-		return;
-	}
-
-	$current = ! empty( $_GET['palette'] ) 
-		? sanitize_key( $_GET['palette'] ) 
-		: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'cobalt-precision' );
-
-	$legacy_map = array(
-		'coastal-dusk'   => 'cobalt-precision',
-		'granite-ridge'  => 'cobalt-precision',
-		'deccan-basalt'  => 'cobalt-precision',
-		'chettinad-teak' => 'terracotta-sun',
-		'laterite-mist'  => 'terracotta-sun',
-		'monsoon-canopy' => 'nordic-pine',
-		'chaparral-dusk' => 'nordic-pine',
-		'rann-mirage'    => 'drafting-blueprint',
-		'happy-hues'     => 'studio-electric',
-	);
-	if ( isset( $legacy_map[ $current ] ) ) {
-		$current = $legacy_map[ $current ];
-	}
-
-	$palettes = array(
-		'cobalt-precision'   => array( 'name' => 'Cobalt Precision', 'font' => 'Geist', 'dot' => '#2563eb' ),
-		'terracotta-sun'     => array( 'name' => 'Terracotta Sun',   'font' => 'Newsreader', 'dot' => '#c2410c' ),
-		'nordic-pine'        => array( 'name' => 'Nordic Pine',      'font' => 'Geist', 'dot' => '#0d7e5d' ),
-		'drafting-blueprint' => array( 'name' => 'Drafting Blueprint', 'font' => 'Space Grotesk', 'dot' => '#ea580c' ),
-		'studio-electric'    => array( 'name' => 'Studio Electric',  'font' => 'Bricolage', 'dot' => '#f582ae' ),
-	);
-	?>
-	<div class="wb-palette-switcher" style="position:fixed;bottom:16px;right:16px;z-index:9999;display:flex;align-items:center;gap:6px;background:rgba(9,17,30,0.94);backdrop-filter:blur(12px);padding:6px 12px;border-radius:30px;font-family:system-ui,-apple-system,sans-serif;font-size:11px;font-weight:600;color:#ffffff;box-shadow:0 6px 20px rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.18);max-width:calc(100vw - 32px);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;">
-		<span style="opacity:0.75;letter-spacing:0.04em;text-transform:uppercase;font-size:9px;padding-right:4px;flex-shrink:0;">World:</span>
-		<?php foreach ( $palettes as $slug => $meta ) : 
-			$is_active = ( $current === $slug );
-			$url = add_query_arg( 'palette', $slug );
-		?>
-			<a href="<?php echo esc_url( $url ); ?>" style="text-decoration:none;display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:14px;transition:all 0.15s ease;flex-shrink:0;<?php echo $is_active ? 'background:#ffffff;color:#09111e;font-weight:750;box-shadow:0 1px 4px rgba(0,0,0,0.2);' : 'color:#ffffff;opacity:0.85;'; ?>">
-				<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:<?php echo esc_attr( $meta['dot'] ); ?>;"></span>
-				<span><?php echo esc_html( $meta['name'] ); ?></span>
-				<span style="font-size:9.5px;opacity:0.75;background:rgba(128,128,128,0.25);padding:1px 5px;border-radius:4px;"><?php echo esc_html( $meta['font'] ); ?></span>
-			</a>
-		<?php endforeach; ?>
-	</div>
-	<?php
-} );

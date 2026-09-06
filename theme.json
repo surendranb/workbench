@@ -19,27 +19,27 @@
 			"custom": true,
 			"defaultPalette": false,
 			"palette": [
-				{ "slug": "page", "color": "#f5f6f4", "name": "Page" },
-				{ "slug": "ink", "color": "#0c1b26", "name": "Ink" },
-				{ "slug": "accent", "color": "#ea4e33", "name": "Accent" },
-				{ "slug": "secondary", "color": "#1f7d88", "name": "Secondary" },
-				{ "slug": "sidebar", "color": "#e8edeb", "name": "Sidebar" },
-				{ "slug": "surface", "color": "#ffffff", "name": "Surface" },
-				{ "slug": "title", "color": "#132533", "name": "Title" },
-				{ "slug": "body", "color": "#223847", "name": "Body" },
-				{ "slug": "lede", "color": "#375060", "name": "Lede" },
-				{ "slug": "muted", "color": "#5d7687", "name": "Muted" },
-				{ "slug": "faint", "color": "#8fa5b3", "name": "Faint" },
-				{ "slug": "border", "color": "#d0d9d5", "name": "Border" },
-				{ "slug": "hairline", "color": "#e4eae7", "name": "Hairline" },
-				{ "slug": "accent-strong", "color": "#d13b22", "name": "Accent Strong" },
-				{ "slug": "accent-wash", "color": "#feeeeb", "name": "Accent Wash" },
-				{ "slug": "accent-border", "color": "#fbc6bd", "name": "Accent Border" },
-				{ "slug": "accent-text", "color": "#d13b22", "name": "Accent Text" },
-				{ "slug": "secondary-wash", "color": "#e3f6f7", "name": "Secondary Wash" },
-				{ "slug": "secondary-border", "color": "#a9e2e5", "name": "Secondary Border" },
-				{ "slug": "secondary-text", "color": "#086165", "name": "Secondary Text" },
-				{ "slug": "live", "color": "#1f7d88", "name": "Live" }
+				{ "slug": "page", "color": "#fef6e4", "name": "Studio Cream Canvas" },
+				{ "slug": "ink", "color": "#001858", "name": "Studio Deep Navy" },
+				{ "slug": "accent", "color": "#f582ae", "name": "Studio Electric Pink" },
+				{ "slug": "secondary", "color": "#008b99", "name": "Studio Luminous Teal" },
+				{ "slug": "sidebar", "color": "#f4e5c2", "name": "Sunlight Biscuit Rail" },
+				{ "slug": "surface", "color": "#ffffff", "name": "Pure White Surface" },
+				{ "slug": "title", "color": "#001858", "name": "Studio Deep Navy Title" },
+				{ "slug": "body", "color": "#172c69", "name": "Rich Studio Navy Body" },
+				{ "slug": "lede", "color": "#263f82", "name": "Studio Navy Lede" },
+				{ "slug": "muted", "color": "#52669e", "name": "Studio Navy Muted" },
+				{ "slug": "faint", "color": "#8898c7", "name": "Faint" },
+				{ "slug": "border", "color": "#decba4", "name": "Warm Cream Border" },
+				{ "slug": "hairline", "color": "#ebdcc0", "name": "Hairline" },
+				{ "slug": "accent-strong", "color": "#db2777", "name": "Accent Strong" },
+				{ "slug": "accent-wash", "color": "#fdf2f6", "name": "Pink Accent Wash" },
+				{ "slug": "accent-border", "color": "#fbcfe8", "name": "Pink Accent Border" },
+				{ "slug": "accent-text", "color": "#9d174d", "name": "Pink Accent Text" },
+				{ "slug": "secondary-wash", "color": "#e6f9fa", "name": "Teal Wash" },
+				{ "slug": "secondary-border", "color": "#a3eaee", "name": "Teal Border" },
+				{ "slug": "secondary-text", "color": "#00636d", "name": "Teal Text" },
+				{ "slug": "live", "color": "#008b99", "name": "Live Indicator" }
 			]
 		},
 		"typography": {
@@ -153,9 +153,9 @@
 		"elements": {
 			"heading": {
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--primary)",
-					"fontWeight": "750",
-					"letterSpacing": "-0.025em",
+					"fontFamily": "var(--wp--preset--font-family--bricolage-grotesque)",
+					"fontWeight": "800",
+					"letterSpacing": "-0.035em",
 					"lineHeight": "1.2"
 				},
 				"color": {
@@ -164,8 +164,9 @@
 			},
 			"h1": {
 				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--bricolage-grotesque)",
 					"fontSize": "var(--wp--preset--font-size--hero)",
-					"fontWeight": "750",
+					"fontWeight": "850",
 					"lineHeight": "1.1",
 					"letterSpacing": "-0.035em"
 				},
@@ -175,8 +176,10 @@
 			},
 			"h2": {
 				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--bricolage-grotesque)",
 					"fontSize": "24px",
-					"fontWeight": "800"
+					"fontWeight": "800",
+					"letterSpacing": "-0.025em"
 				},
 				"spacing": {
 					"margin": { "top": "2em", "bottom": "12px" }
@@ -184,18 +187,20 @@
 			},
 			"h3": {
 				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--bricolage-grotesque)",
 					"fontSize": "19px",
-					"fontWeight": "700"
+					"fontWeight": "750",
+					"letterSpacing": "-0.02em"
 				},
 				"spacing": {
 					"margin": { "top": "1.6em", "bottom": "10px" }
 				}
 			},
 			"link": {
-				"color": { "text": "var(--wp--preset--color--ink)" },
+				"color": { "text": "var(--wp--preset--color--secondary)" },
 				"typography": { "textDecoration": "underline" },
 				":hover": {
-					"color": { "text": "var(--wp--preset--color--accent)" },
+					"color": { "text": "var(--wp--preset--color--accent-strong)" },
 					"typography": { "textDecoration": "underline" }
 				}
 			},
@@ -203,12 +208,12 @@
 				"border": { "radius": "8px" },
 				"color": {
 					"background": "var(--wp--preset--color--accent)",
-					"text": "#ffffff"
+					"text": "#001858"
 				},
 				"typography": {
-					"fontWeight": "700",
+					"fontWeight": "800",
 					"fontSize": "13px",
-					"fontFamily": "var(--wp--preset--font-family--primary)"
+					"fontFamily": "var(--wp--preset--font-family--bricolage-grotesque)"
 				},
 				"spacing": {
 					"padding": {
@@ -233,9 +238,10 @@
 		"blocks": {
 			"core/site-title": {
 				"typography": {
-					"fontSize": "clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.392), 18px)",
-					"fontWeight": "800",
-					"letterSpacing": "-0.03em",
+					"fontFamily": "var(--wp--preset--font-family--bricolage-grotesque)",
+					"fontSize": "clamp(15px, 0.875rem + ((1vw - 3.2px) * 0.392), 19px)",
+					"fontWeight": "850",
+					"letterSpacing": "-0.035em",
 					"lineHeight": "1.3"
 				},
 				"color": {
@@ -253,9 +259,10 @@
 			},
 			"core/post-title": {
 				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--bricolage-grotesque)",
 					"fontSize": "var(--wp--preset--font-size--hero)",
-					"fontWeight": "900",
-					"letterSpacing": "-0.03em",
+					"fontWeight": "850",
+					"letterSpacing": "-0.035em",
 					"lineHeight": "1.15"
 				},
 				"color": {

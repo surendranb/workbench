@@ -235,12 +235,14 @@ Tags: blog, two-columns, right-sidebar, custom-menu, custom-logo, editor-style, 
 	display: inline-block;
 	font-family: var(--wp--preset--font-family--mono);
 	font-size: 11px;
-	background: var(--wp--preset--color--hairline);
-	color: var(--wp--preset--color--lede);
+	background: var(--wp--preset--color--secondary-wash, var(--wp--preset--color--accent-wash, var(--wp--preset--color--hairline)));
+	color: var(--wp--preset--color--secondary-text, var(--wp--preset--color--accent-text, var(--wp--preset--color--lede)));
+	border: 1px solid var(--wp--preset--color--secondary-border, var(--wp--preset--color--accent-border, var(--wp--preset--color--border)));
 	padding: 4px 8px;
-	border-radius: 5px;
-	font-weight: 600;
+	border-radius: 6px;
+	font-weight: 700;
 	margin: 0 4px 4px 0;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 .bai-notes-actions {
 	border-top: 1px solid var(--wp--preset--color--hairline);
@@ -332,8 +334,9 @@ Tags: blog, two-columns, right-sidebar, custom-menu, custom-logo, editor-style, 
 	color: var(--wp--preset--color--title);
 }
 .bai-project-nav-item.is-active {
-	color: var(--wp--preset--color--title);
-	border-bottom-color: var(--wp--preset--color--title);
+	color: var(--wp--preset--color--ink);
+	border-bottom: 3px solid var(--wp--preset--color--accent);
+	font-weight: 750;
 }
 .bai-project-nav-item.bai-nav-ext {
 	color: var(--wp--preset--color--faint);

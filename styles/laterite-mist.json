@@ -2,28 +2,31 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"title": "Laterite Mist",
-	"description": "Vibrant sun-baked red laterite earth, lush coconut palm canopy green, deep soil umber, and misty sandstone wash.",
+	"description": "Warm sun-baked sandstone mist canvas, rich plowed red laterite earth, lush palm canopy green, and deep roasted umber soil.",
 	"settings": {
 		"color": {
 			"palette": [
-				{ "slug": "page", "color": "#f7efe3", "name": "Misty Sandstone Canvas" },
-				{ "slug": "ink", "color": "#1c1009", "name": "Deep Soil Umber" },
+				{ "slug": "page", "color": "#f3e7d3", "name": "Misty Sandstone Canvas" },
+				{ "slug": "ink", "color": "#2a140a", "name": "Roasted Umber Soil" },
 				{ "slug": "accent", "color": "#c2410c", "name": "Plowed Red Laterite" },
-				{ "slug": "secondary", "color": "#245836", "name": "Palm Canopy Green" },
-				{ "slug": "sidebar", "color": "#e5d4bf", "name": "Warm Clay Mist" },
+				{ "slug": "secondary", "color": "#1b5e20", "name": "Palm Canopy Green" },
+				{ "slug": "sidebar", "color": "#e2d1b7", "name": "Warm Clay Mist Rail" },
 				{ "slug": "surface", "color": "#ffffff", "name": "Pure White Surface" },
-				{ "slug": "title", "color": "#26150b", "name": "Title" },
-				{ "slug": "body", "color": "#382317", "name": "Body" },
-				{ "slug": "lede", "color": "#4e3526", "name": "Lede" },
-				{ "slug": "muted", "color": "#705544", "name": "Muted" },
-				{ "slug": "faint", "color": "#9e8372", "name": "Faint" },
-				{ "slug": "border", "color": "#d3bfab", "name": "Warm Clay Border" },
-				{ "slug": "hairline", "color": "#e6d7c5", "name": "Hairline" },
+				{ "slug": "title", "color": "#32180c", "name": "Deep Umber Timber Title" },
+				{ "slug": "body", "color": "#48291a", "name": "Warm Soil Body Text" },
+				{ "slug": "lede", "color": "#5c3724", "name": "Lede" },
+				{ "slug": "muted", "color": "#7e5842", "name": "Misty Loam Muted" },
+				{ "slug": "faint", "color": "#a6836e", "name": "Faint" },
+				{ "slug": "border", "color": "#ccb495", "name": "Sandstone Trail Border" },
+				{ "slug": "hairline", "color": "#e2cfb7", "name": "Hairline" },
 				{ "slug": "accent-strong", "color": "#9e3206", "name": "Accent Strong" },
-				{ "slug": "accent-wash", "color": "#fbeae3", "name": "Accent Wash" },
-				{ "slug": "accent-border", "color": "#f5bfa9", "name": "Accent Border" },
-				{ "slug": "accent-text", "color": "#9e3206", "name": "Accent Text" },
-				{ "slug": "live", "color": "#245836", "name": "Live Indicator" }
+				{ "slug": "accent-wash", "color": "#fdf0ea", "name": "Laterite Accent Wash" },
+				{ "slug": "accent-border", "color": "#f7cbba", "name": "Laterite Accent Border" },
+				{ "slug": "accent-text", "color": "#9e3206", "name": "Laterite Accent Text" },
+				{ "slug": "secondary-wash", "color": "#eaf4eb", "name": "Palm Green Wash" },
+				{ "slug": "secondary-border", "color": "#b9dcbe", "name": "Palm Green Border" },
+				{ "slug": "secondary-text", "color": "#144a19", "name": "Palm Green Text" },
+				{ "slug": "live", "color": "#1b5e20", "name": "Live Indicator" }
 			]
 		}
 	},
@@ -49,7 +52,7 @@
 				}
 			},
 			"link": {
-				"color": { "text": "var(--wp--preset--color--ink)" },
+				"color": { "text": "var(--wp--preset--color--secondary)" },
 				":hover": {
 					"color": { "text": "var(--wp--preset--color--accent)" }
 				}

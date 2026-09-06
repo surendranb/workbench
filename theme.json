@@ -36,6 +36,9 @@
 				{ "slug": "accent-wash", "color": "#feeeeb", "name": "Accent Wash" },
 				{ "slug": "accent-border", "color": "#fbc6bd", "name": "Accent Border" },
 				{ "slug": "accent-text", "color": "#d13b22", "name": "Accent Text" },
+				{ "slug": "secondary-wash", "color": "#e3f6f7", "name": "Secondary Wash" },
+				{ "slug": "secondary-border", "color": "#a9e2e5", "name": "Secondary Border" },
+				{ "slug": "secondary-text", "color": "#086165", "name": "Secondary Text" },
 				{ "slug": "live", "color": "#1f7d88", "name": "Live" }
 			]
 		},

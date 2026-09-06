@@ -2,28 +2,31 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"title": "Coastal Dusk",
-	"description": "Luminous coastal sand, incandescent coral-dusk horizon ribbon, breaking seafoam surf, and deep oceanic navy.",
+	"description": "Luminous sea-mist sand canvas, incandescent coral-dusk horizon ribbon, breaking seafoam surf, and deep oceanic navy.",
 	"settings": {
 		"color": {
 			"palette": [
-				{ "slug": "page", "color": "#f4f6f4", "name": "Coastal Sand Canvas" },
-				{ "slug": "ink", "color": "#091621", "name": "Oceanic Deep Navy" },
+				{ "slug": "page", "color": "#e7f0ed", "name": "Coastal Sea-Mist Sand" },
+				{ "slug": "ink", "color": "#0a2238", "name": "Oceanic Deep Navy" },
 				{ "slug": "accent", "color": "#ea4e33", "name": "Sunset Coral Ember" },
-				{ "slug": "secondary", "color": "#167883", "name": "Seafoam Surf Teal" },
-				{ "slug": "sidebar", "color": "#dce5e1", "name": "Coastal Slate Mist" },
+				{ "slug": "secondary", "color": "#0e8388", "name": "Seafoam Surf Teal" },
+				{ "slug": "sidebar", "color": "#d0ded9", "name": "Coastal Slate Mist" },
 				{ "slug": "surface", "color": "#ffffff", "name": "Pure White Surface" },
-				{ "slug": "title", "color": "#0e202d", "name": "Title" },
-				{ "slug": "body", "color": "#1d3240", "name": "Body" },
-				{ "slug": "lede", "color": "#314959", "name": "Lede" },
-				{ "slug": "muted", "color": "#546e7f", "name": "Muted" },
-				{ "slug": "faint", "color": "#859dae", "name": "Faint" },
-				{ "slug": "border", "color": "#c4d1cc", "name": "Sea-Mineral Border" },
-				{ "slug": "hairline", "color": "#dbe3e0", "name": "Hairline" },
+				{ "slug": "title", "color": "#092842", "name": "Oceanic Crest Title" },
+				{ "slug": "body", "color": "#163a56", "name": "Marine Navy Body" },
+				{ "slug": "lede", "color": "#224e72", "name": "Lede" },
+				{ "slug": "muted", "color": "#496f8c", "name": "Sea Spray Slate" },
+				{ "slug": "faint", "color": "#7f9cb3", "name": "Faint" },
+				{ "slug": "border", "color": "#b6ccc4", "name": "Sea-Mineral Border" },
+				{ "slug": "hairline", "color": "#d4e2dc", "name": "Hairline" },
 				{ "slug": "accent-strong", "color": "#cf381e", "name": "Accent Strong" },
-				{ "slug": "accent-wash", "color": "#feeeeb", "name": "Accent Wash" },
-				{ "slug": "accent-border", "color": "#fbc2b7", "name": "Accent Border" },
-				{ "slug": "accent-text", "color": "#cf381e", "name": "Accent Text" },
-				{ "slug": "live", "color": "#167883", "name": "Live Indicator" }
+				{ "slug": "accent-wash", "color": "#fdeee9", "name": "Accent Wash" },
+				{ "slug": "accent-border", "color": "#fbc1b4", "name": "Accent Border" },
+				{ "slug": "accent-text", "color": "#be3017", "name": "Accent Text" },
+				{ "slug": "secondary-wash", "color": "#e3f6f7", "name": "Seafoam Surf Wash" },
+				{ "slug": "secondary-border", "color": "#a9e2e5", "name": "Seafoam Surf Border" },
+				{ "slug": "secondary-text", "color": "#086165", "name": "Seafoam Surf Text" },
+				{ "slug": "live", "color": "#0e8388", "name": "Live Indicator" }
 			]
 		}
 	},
@@ -49,7 +52,7 @@
 				}
 			},
 			"link": {
-				"color": { "text": "var(--wp--preset--color--ink)" },
+				"color": { "text": "var(--wp--preset--color--secondary)" },
 				":hover": {
 					"color": { "text": "var(--wp--preset--color--accent)" }
 				}

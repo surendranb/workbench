@@ -1,8 +1,8 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Dish Golden Hour",
-	"description": "Stanford Dish foothills at dusk: golden oat grass, winding asphalt path, silhouetted live oaks, and glowing apricot horizon.",
+	"title": "Chaparral Dusk",
+	"description": "Rolling golden oat grass, deep asphalt carbon ink, and glowing sunset amber horizon.",
 	"settings": {
 		"color": {
 			"palette": [

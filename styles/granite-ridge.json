@@ -1,8 +1,8 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Nandi Granite",
-	"description": "Nandi Hills misty ridge: cool overcast slate sky, wet granite basalt ink, and vibrant laterite clay accent.",
+	"title": "Granite Ridge",
+	"description": "Cool overcast slate mist, wet granite basalt ink, and vibrant laterite clay accent.",
 	"settings": {
 		"color": {
 			"palette": [

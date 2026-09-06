@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"title": "Laterite Mist",
-	"description": "Nandi Hills landscape: warm plowed laterite red earth, deep umber ink, palm canopy green, and cool cloud mist.",
+	"description": "Warm plowed laterite red earth, deep umber ink, palm canopy green, and cool cloud mist.",
 	"settings": {
 		"color": {
 			"palette": [

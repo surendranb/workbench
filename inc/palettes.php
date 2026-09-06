@@ -20,12 +20,12 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 	if ( ! $palette_slug ) {
 		$palette_slug = ! empty( $_GET['palette'] ) 
 			? sanitize_key( $_GET['palette'] ) 
-			: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'coastal-ember' );
+			: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'coastal-dusk' );
 	}
 
 	$file = get_stylesheet_directory() . "/styles/{$palette_slug}.json";
 	if ( ! file_exists( $file ) ) {
-		$file = get_stylesheet_directory() . "/styles/coastal-ember.json";
+		$file = get_stylesheet_directory() . "/styles/coastal-dusk.json";
 		if ( ! file_exists( $file ) ) {
 			return '';
 		}
@@ -156,10 +156,10 @@ add_action( 'wp_footer', function () {
 
 	$current = ! empty( $_GET['palette'] ) 
 		? sanitize_key( $_GET['palette'] ) 
-		: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'coastal-ember' );
+		: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'coastal-dusk' );
 
 	$palettes = array(
-		'coastal-ember'  => 'Coastal Ember',
+		'coastal-dusk'   => 'Coastal Dusk',
 		'laterite-mist'  => 'Laterite Mist',
 		'chaparral-dusk' => 'Chaparral Dusk',
 		'granite-ridge'  => 'Granite Ridge',

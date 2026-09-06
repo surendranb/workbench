@@ -122,7 +122,11 @@ add_action( 'init', function () {
 add_shortcode( 'workbench_search_box', function () {
 	$name = get_bloginfo( 'name' );
 	return sprintf(
-		'<input type="search" class="bai-filter" placeholder="Search %1$s" aria-label="Search %1$s" data-bai-filter />',
+		'<div class="bai-filter-chassis">'
+		. '<svg class="bai-search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>'
+		. '<input type="search" class="bai-filter" placeholder="Search %1$s" aria-label="Search %1$s" data-bai-filter />'
+		. '<kbd class="bai-search-badge" title="Keyboard shortcut: ⌘K or /">⌘K</kbd>'
+		. '</div>',
 		esc_attr( $name )
 	);
 } );

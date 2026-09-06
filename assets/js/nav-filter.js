@@ -26,4 +26,20 @@
 			item.hidden = q && item.textContent.toLowerCase().indexOf( q ) === -1;
 		} );
 	} );
+
+	// Keyboard shortcuts: ⌘K, Ctrl+K, or / to focus search; Escape to clear & blur
+	document.addEventListener( 'keydown', function ( e ) {
+		var tag = ( e.target.tagName || '' ).toLowerCase();
+		var isInput = tag === 'input' || tag === 'textarea' || e.target.isContentEditable;
+
+		if ( ( ( e.metaKey || e.ctrlKey ) && e.key.toLowerCase() === 'k' ) || ( e.key === '/' && ! isInput ) ) {
+			e.preventDefault();
+			input.focus();
+			input.select();
+		} else if ( e.key === 'Escape' && document.activeElement === input ) {
+			input.value = '';
+			input.dispatchEvent( new Event( 'input' ) );
+			input.blur();
+		}
+	} );
 } )();

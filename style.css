@@ -41,6 +41,10 @@ Tags: blog, two-columns, right-sidebar, custom-menu, custom-logo, editor-style, 
 	box-sizing: border-box;
 	height: 100%;
 	overflow: hidden;
+	background: var(--wp--preset--color--sidebar, color-mix(in srgb, var(--wp--preset--color--page) 92%, var(--wp--preset--color--border)));
+}
+.bai-side-col {
+	background: var(--wp--preset--color--sidebar, color-mix(in srgb, var(--wp--preset--color--page) 92%, var(--wp--preset--color--border))) !important;
 }
 .bai-side-head,
 .bai-side-foot {
@@ -70,27 +74,28 @@ Tags: blog, two-columns, right-sidebar, custom-menu, custom-logo, editor-style, 
 .bai-side-filter {
 	flex-shrink: 0;
 	padding: 12px 20px;
-	border-bottom: 1px solid var(--wp--preset--color--hairline);
+	border-bottom: 1px solid var(--wp--preset--color--border);
 	box-sizing: border-box;
-	background: var(--wp--preset--color--surface);
+	background: transparent;
 }
 .bai-filter {
 	width: 100%;
 	padding: 9px 12px;
-	border: 1px solid color-mix(in srgb, var(--wp--preset--color--faint) 55%, transparent);
+	border: 1px solid var(--wp--preset--color--border);
 	border-radius: 8px;
 	font-size: 13px;
 	font-family: inherit;
 	outline: none;
-	background: var(--wp--preset--color--page);
-	color: var(--wp--preset--color--body);
+	background: #ffffff;
+	color: var(--wp--preset--color--ink);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 	transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
 	box-sizing: border-box;
 }
 .bai-filter:focus {
 	border-color: var(--wp--preset--color--accent);
-	background: var(--wp--preset--color--surface);
-	box-shadow: 0 0 0 3px color-mix(in srgb, var(--wp--preset--color--accent) 12%, transparent);
+	background: #ffffff;
+	box-shadow: 0 0 0 3px var(--wp--preset--color--accent-wash);
 }
 .bai-filter::placeholder {
 	color: var(--wp--preset--color--faint);
@@ -109,20 +114,22 @@ Tags: blog, two-columns, right-sidebar, custom-menu, custom-logo, editor-style, 
 	border: 1px solid transparent;
 	border-radius: 8px;
 	padding: 11px 12px !important;
-	transition: background 0.15s ease, border-color 0.15s ease;
+	transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 	box-sizing: border-box;
 }
 .bai-nav-item:hover {
-	background: var(--wp--preset--color--page);
-	border-color: var(--wp--preset--color--border);
+	background: color-mix(in srgb, #ffffff 65%, transparent);
+	border-color: var(--wp--preset--color--hairline);
 }
 .bai-nav-list li.is-active > .bai-nav-item,
 .bai-nav-item.is-active {
-	background: var(--wp--preset--color--page);
+	background: #ffffff;
 	border-color: var(--wp--preset--color--border);
+	border-left: 3.5px solid var(--wp--preset--color--accent);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 .bai-nav-list li.is-active > .bai-nav-item:hover {
-	background: var(--wp--preset--color--page);
+	background: #ffffff;
 	border-color: var(--wp--preset--color--border);
 }
 .bai-nav-item .wp-block-post-title {
@@ -171,16 +178,29 @@ Tags: blog, two-columns, right-sidebar, custom-menu, custom-logo, editor-style, 
 	min-height: calc(100vh - var(--wb-header-h));
 }
 
-/* Kicker with live dot */
+/* Kicker capsule with glowing accent dot */
+.bai-kicker {
+	display: inline-flex;
+	align-items: center;
+	padding: 5px 13px;
+	border-radius: 9999px;
+	background: #ffffff;
+	border: 1px solid var(--wp--preset--color--border);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+	color: var(--wp--preset--color--ink) !important;
+	font-size: 11px !important;
+	font-weight: 750 !important;
+	letter-spacing: 0.06em !important;
+}
 .bai-kicker::before {
 	content: "";
 	display: inline-block;
 	width: 7px;
 	height: 7px;
 	border-radius: 50%;
-	background: var(--wp--preset--color--live);
+	background: var(--wp--preset--color--accent);
 	margin-right: 8px;
-	vertical-align: 1px;
+	box-shadow: 0 0 0 2.5px var(--wp--preset--color--accent-wash);
 }
 
 /* Narrative block: hairline top rule */
@@ -332,6 +352,54 @@ Tags: blog, two-columns, right-sidebar, custom-menu, custom-logo, editor-style, 
 }
 ::selection {
 	background: color-mix(in srgb, var(--wp--preset--color--accent) 16%, transparent);
+}
+
+/* ==========================================================================
+   Buttons & CTAs: Tactile High-Contrast
+   ========================================================================== */
+.wp-block-button__link {
+	border-radius: 8px !important;
+	font-family: var(--wp--preset--font-family--primary) !important;
+	font-size: 13px !important;
+	font-weight: 700 !important;
+	padding: 10px 18px !important;
+	text-decoration: none !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+/* Solid primary button */
+.wp-block-button:not(.is-style-outline) .wp-block-button__link,
+.wp-block-buttons > .wp-block-button:last-child .wp-block-button__link,
+.bai-newsletter-btn {
+	background-color: var(--wp--preset--color--accent) !important;
+	color: #ffffff !important;
+	border: 1px solid var(--wp--preset--color--accent) !important;
+	box-shadow: 0 2px 8px color-mix(in srgb, var(--wp--preset--color--accent) 30%, transparent) !important;
+}
+.wp-block-button:not(.is-style-outline) .wp-block-button__link:hover,
+.wp-block-buttons > .wp-block-button:last-child .wp-block-button__link:hover,
+.bai-newsletter-btn:hover {
+	background-color: var(--wp--preset--color--accent-strong) !important;
+	border-color: var(--wp--preset--color--accent-strong) !important;
+	color: #ffffff !important;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 14px color-mix(in srgb, var(--wp--preset--color--accent) 38%, transparent) !important;
+}
+/* Outline secondary button */
+.wp-block-button.is-style-outline .wp-block-button__link {
+	background-color: #ffffff !important;
+	color: var(--wp--preset--color--ink) !important;
+	border: 1.5px solid var(--wp--preset--color--border) !important;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+	font-weight: 650 !important;
+}
+.wp-block-button.is-style-outline .wp-block-button__link:hover {
+	border-color: var(--wp--preset--color--accent) !important;
+	color: var(--wp--preset--color--accent) !important;
+	transform: translateY(-1px);
+	box-shadow: 0 3px 8px color-mix(in srgb, var(--wp--preset--color--accent) 15%, transparent) !important;
 }
 
 

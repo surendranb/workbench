@@ -1,28 +1,29 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Happy Hues",
-	"description": "Happy Hues #17 palette: warm cream backdrop, deep navy ink, energetic pink accent, and refreshing teal secondary.",
+	"title": "Happy Hues #17",
+	"description": "Studio house palette: warm cream, deep navy, electric pink, and luminous teal.",
 	"settings": {
 		"color": {
 			"palette": [
-				{ "slug": "surface", "color": "#ffffff", "name": "Surface" },
-				{ "slug": "page", "color": "#fef6e4", "name": "Page" },
-				{ "slug": "ink", "color": "#001858", "name": "Ink" },
+				{ "slug": "page", "color": "#fef6e4", "name": "Studio Cream Canvas" },
+				{ "slug": "ink", "color": "#001858", "name": "Studio Deep Navy" },
+				{ "slug": "accent", "color": "#f582ae", "name": "Studio Electric Pink" },
+				{ "slug": "secondary", "color": "#8bd3dd", "name": "Studio Luminous Teal" },
+				{ "slug": "sidebar", "color": "#f3e2ba", "name": "Grounded Warm Cream" },
+				{ "slug": "surface", "color": "#ffffff", "name": "Pure White Surface" },
 				{ "slug": "title", "color": "#001858", "name": "Title" },
-				{ "slug": "body", "color": "#172c66", "name": "Body" },
-				{ "slug": "lede", "color": "#001858", "name": "Lede" },
-				{ "slug": "muted", "color": "#637094", "name": "Muted" },
-				{ "slug": "faint", "color": "#8c96b0", "name": "Faint" },
-				{ "slug": "border", "color": "#e3dac9", "name": "Border" },
-				{ "slug": "hairline", "color": "#f3ece0", "name": "Hairline" },
-				{ "slug": "accent", "color": "#f582ae", "name": "Accent" },
-				{ "slug": "accent-strong", "color": "#d96593", "name": "Accent Strong" },
+				{ "slug": "body", "color": "#172554", "name": "Body" },
+				{ "slug": "lede", "color": "#1e293b", "name": "Lede" },
+				{ "slug": "muted", "color": "#475569", "name": "Muted" },
+				{ "slug": "faint", "color": "#64748b", "name": "Faint" },
+				{ "slug": "border", "color": "#dcc89b", "name": "Warm Cream-Navy Border" },
+				{ "slug": "hairline", "color": "#ede0c2", "name": "Hairline" },
+				{ "slug": "accent-strong", "color": "#db6894", "name": "Accent Strong" },
 				{ "slug": "accent-wash", "color": "#fef0f5", "name": "Accent Wash" },
-				{ "slug": "accent-border", "color": "#fbc4d8", "name": "Accent Border" },
-				{ "slug": "accent-text", "color": "#d96593", "name": "Accent Text" },
-				{ "slug": "secondary", "color": "#8bd3dd", "name": "Secondary" },
-				{ "slug": "live", "color": "#8bd3dd", "name": "Live" }
+				{ "slug": "accent-border", "color": "#fbc3d7", "name": "Accent Border" },
+				{ "slug": "accent-text", "color": "#001858", "name": "Accent Text" },
+				{ "slug": "live", "color": "#10b981", "name": "Live Indicator" }
 			]
 		}
 	},
@@ -32,6 +33,9 @@
 			"text": "var(--wp--preset--color--body)"
 		},
 		"elements": {
+			"heading": {
+				"color": { "text": "var(--wp--preset--color--ink)" }
+			},
 			"button": {
 				"color": {
 					"background": "var(--wp--preset--color--accent)",
@@ -42,6 +46,12 @@
 						"background": "var(--wp--preset--color--accent-strong)",
 						"text": "#ffffff"
 					}
+				}
+			},
+			"link": {
+				"color": { "text": "var(--wp--preset--color--ink)" },
+				":hover": {
+					"color": { "text": "var(--wp--preset--color--accent)" }
 				}
 			}
 		}

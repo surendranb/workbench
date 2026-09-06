@@ -10,13 +10,13 @@
  */
 
 :root {
-	--bai-hh-cream: #fef6e4;
-	--bai-hh-navy: #001858;
-	--bai-hh-pink: #f582ae;
-	--bai-hh-teal: #8bd3dd;
-	--bai-hh-surface: #ffffff;
-	--bai-hh-border: #e2e8f0;
-	--bai-hh-muted: #475569;
+	--bai-hh-cream: var(--wp--preset--color--accent-wash, #fef6e4);
+	--bai-hh-navy: var(--wp--preset--color--ink, #001858);
+	--bai-hh-pink: var(--wp--preset--color--accent, #f582ae);
+	--bai-hh-teal: var(--wp--preset--color--secondary, #8bd3dd);
+	--bai-hh-surface: var(--wp--preset--color--surface, #ffffff);
+	--bai-hh-border: var(--wp--preset--color--border, #e2e8f0);
+	--bai-hh-muted: var(--wp--preset--color--muted, #475569);
 }
 
 /* Base Form */
@@ -57,22 +57,24 @@
 	flex: 0 0 auto;
 	padding: 11px 22px;
 	font-size: 14px;
-	font-weight: 600;
+	font-weight: 700;
 	line-height: 1.4;
-	color: #ffffff;
-	background: var(--bai-hh-navy);
-	border: 1px solid var(--bai-hh-navy);
+	color: #ffffff !important;
+	background: var(--wp--preset--color--accent) !important;
+	border: 1px solid var(--wp--preset--color--accent) !important;
 	border-radius: 8px;
 	cursor: pointer;
-	transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+	transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 	font-family: inherit;
 	white-space: nowrap;
 }
 
 .bai-newsletter-btn:hover {
-	background: var(--bai-hh-pink);
-	border-color: var(--bai-hh-pink);
-	color: var(--bai-hh-navy);
+	background: var(--wp--preset--color--accent-strong) !important;
+	border-color: var(--wp--preset--color--accent-strong) !important;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
 .bai-newsletter-btn:active {
@@ -83,7 +85,7 @@
 .bai-newsletter-microcopy {
 	font-size: 12px;
 	line-height: 1.5;
-	color: #64748b;
+	color: var(--wp--preset--color--muted);
 	margin: 6px 0 0 0;
 }
 
@@ -94,9 +96,9 @@
 	font-weight: 700;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	color: var(--bai-hh-navy);
-	background: var(--bai-hh-cream);
-	border: 1px solid var(--bai-hh-teal);
+	color: var(--wp--preset--color--accent-text, var(--wp--preset--color--accent)) !important;
+	background: var(--wp--preset--color--accent-wash) !important;
+	border: 1px solid var(--wp--preset--color--accent-border) !important;
 	padding: 3px 8px;
 	border-radius: 4px;
 	margin-bottom: 12px;
@@ -104,13 +106,12 @@
 
 /* Shortcode Box [workbench_newsletter_box] */
 .bai-newsletter-box {
-	background: var(--bai-hh-surface);
-	background-image: linear-gradient(180deg, var(--bai-hh-cream) 0%, var(--bai-hh-surface) 100px);
-	border: 1px solid var(--bai-hh-border);
+	background: #ffffff !important;
+	border: 1px solid var(--wp--preset--color--border) !important;
 	border-radius: 12px;
 	padding: 28px 32px;
 	margin: 36px 0;
-	box-shadow: 0 2px 8px rgba(0, 24, 88, 0.04);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
 }
 
 .bai-newsletter-box .bai-newsletter-title {

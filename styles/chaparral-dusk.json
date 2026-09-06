@@ -2,27 +2,28 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"title": "Chaparral Dusk",
-	"description": "California rolling golden oat grass canvas, deep asphalt carbon ink, twilight bay blue, and vibrant sunset amber horizon.",
+	"description": "Golden sun-cured oat straw savanna, glowing horizon amber flare, asphalt charcoal trail, and twilight bay blue.",
 	"settings": {
 		"color": {
 			"palette": [
-				{ "slug": "surface", "color": "#ffffff", "name": "Surface" },
-				{ "slug": "page", "color": "#f5ede0", "name": "Page" },
-				{ "slug": "ink", "color": "#181a1f", "name": "Ink" },
-				{ "slug": "title", "color": "#23262d", "name": "Title" },
-				{ "slug": "body", "color": "#282c34", "name": "Body" },
-				{ "slug": "lede", "color": "#454952", "name": "Lede" },
-				{ "slug": "muted", "color": "#636772", "name": "Muted" },
-				{ "slug": "faint", "color": "#91949e", "name": "Faint" },
-				{ "slug": "border", "color": "#dbceb8", "name": "Border" },
-				{ "slug": "hairline", "color": "#ece1ce", "name": "Hairline" },
-				{ "slug": "accent", "color": "#d9650d", "name": "Accent" },
-				{ "slug": "accent-strong", "color": "#b85106", "name": "Accent Strong" },
-				{ "slug": "accent-wash", "color": "#fef3ea", "name": "Accent Wash" },
-				{ "slug": "accent-border", "color": "#f7caa6", "name": "Accent Border" },
-				{ "slug": "accent-text", "color": "#b85106", "name": "Accent Text" },
-				{ "slug": "secondary", "color": "#425f7d", "name": "Secondary" },
-				{ "slug": "live", "color": "#4a703b", "name": "Live" }
+				{ "slug": "page", "color": "#f6efe1", "name": "Golden Oat Straw Canvas" },
+				{ "slug": "ink", "color": "#12151a", "name": "Twilight Obsidian" },
+				{ "slug": "accent", "color": "#d96812", "name": "Sunset Amber Flare" },
+				{ "slug": "secondary", "color": "#32557a", "name": "Twilight Bay Blue" },
+				{ "slug": "sidebar", "color": "#e2d2b5", "name": "Toasted Straw Sidebar" },
+				{ "slug": "surface", "color": "#ffffff", "name": "Pure White Surface" },
+				{ "slug": "title", "color": "#191e26", "name": "Title" },
+				{ "slug": "body", "color": "#2a313d", "name": "Body" },
+				{ "slug": "lede", "color": "#404959", "name": "Lede" },
+				{ "slug": "muted", "color": "#636f82", "name": "Muted" },
+				{ "slug": "faint", "color": "#929fad", "name": "Faint" },
+				{ "slug": "border", "color": "#d0bf9e", "name": "Toasted Wheat Border" },
+				{ "slug": "hairline", "color": "#e4d8be", "name": "Hairline" },
+				{ "slug": "accent-strong", "color": "#b55108", "name": "Accent Strong" },
+				{ "slug": "accent-wash", "color": "#fdf0e2", "name": "Accent Wash" },
+				{ "slug": "accent-border", "color": "#f8c99e", "name": "Accent Border" },
+				{ "slug": "accent-text", "color": "#b55108", "name": "Accent Text" },
+				{ "slug": "live", "color": "#d96812", "name": "Live Indicator" }
 			]
 		}
 	},
@@ -32,6 +33,9 @@
 			"text": "var(--wp--preset--color--body)"
 		},
 		"elements": {
+			"heading": {
+				"color": { "text": "var(--wp--preset--color--ink)" }
+			},
 			"button": {
 				"color": {
 					"background": "var(--wp--preset--color--accent)",
@@ -42,6 +46,12 @@
 						"background": "var(--wp--preset--color--accent-strong)",
 						"text": "#ffffff"
 					}
+				}
+			},
+			"link": {
+				"color": { "text": "var(--wp--preset--color--ink)" },
+				":hover": {
+					"color": { "text": "var(--wp--preset--color--accent)" }
 				}
 			}
 		}

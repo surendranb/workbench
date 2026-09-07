@@ -379,3 +379,96 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 add_action( 'wp_head', function () {
 	echo workbench_get_palette_css();
 }, 5 );
+
+/**
+ * Palette metadata & inspiration registry.
+ */
+function workbench_get_palette_meta( $slug = '' ) {
+	if ( ! $slug ) {
+		$slug = ! empty( $_GET['palette'] ) ? sanitize_key( $_GET['palette'] ) : 'neelakurunji';
+	}
+
+	$legacy_map = array(
+		'coastal-dusk'   => 'cobalt-precision',
+		'granite-ridge'  => 'cobalt-precision',
+		'deccan-basalt'  => 'cobalt-precision',
+		'chettinad-teak' => 'terracotta-sun',
+		'laterite-mist'  => 'terracotta-sun',
+		'monsoon-canopy' => 'nordic-pine',
+		'chaparral-dusk' => 'nordic-pine',
+		'rann-mirage'    => 'drafting-blueprint',
+		'happy-hues'     => 'studio-electric',
+		'kurinji'        => 'neelakurunji',
+	);
+	if ( isset( $legacy_map[ $slug ] ) ) {
+		$slug = $legacy_map[ $slug ];
+	}
+
+	$registry = array(
+		'neelakurunji'       => array(
+			'name'        => 'Neelakurunji',
+			'inspired_by' => 'the 12-year Shola bloom at dusk',
+			'full_story'  => 'Inspired by Strobilanthes kunthiana blossoming once every 12 years across the Western Ghats under an orange sunset sky.',
+			'dot'         => '#664de5',
+		),
+		'studio-electric'    => array(
+			'name'        => 'Studio Electric',
+			'inspired_by' => 'Happy Hues #17 & modernist graphic labs',
+			'full_story'  => 'Inspired by Happy Hues #17: warm vintage cream, deep modernist navy, electric pink, and luminous teal.',
+			'dot'         => '#f582ae',
+		),
+		'terracotta-sun'     => array(
+			'name'        => 'Terracotta Sun',
+			'inspired_by' => 'sunlit Chettinad tiles & lime plaster',
+			'full_story'  => 'Inspired by the warm baked terracotta of Chettinad courtyards and classic editorial literature.',
+			'dot'         => '#c2410c',
+		),
+		'nordic-pine'        => array(
+			'name'        => 'Nordic Pine',
+			'inspired_by' => 'mountain Shola canopies & pine mist',
+			'full_story'  => 'Inspired by high-altitude Western Ghats forest canopies and alpine evergreen mist.',
+			'dot'         => '#0d7e5d',
+		),
+		'drafting-blueprint' => array(
+			'name'        => 'Drafting Blueprint',
+			'inspired_by' => 'Rann mirages & architectural drafting paper',
+			'full_story'  => 'Inspired by technical grid systems, architectural blueprint paper, and salt mirages.',
+			'dot'         => '#ea580c',
+		),
+		'cobalt-precision'   => array(
+			'name'        => 'Cobalt Precision',
+			'inspired_by' => 'granite ridges & precision instruments',
+			'full_story'  => 'Inspired by cool granite ridges and precision instrument engineering.',
+			'dot'         => '#2563eb',
+		),
+	);
+
+	return isset( $registry[ $slug ] ) ? $registry[ $slug ] : $registry['neelakurunji'];
+}
+
+/**
+ * [workbench_palette_colophon] shortcode: outputs the palette attribution line.
+ */
+add_shortcode( 'workbench_palette_colophon', function () {
+	$meta = workbench_get_palette_meta();
+
+	return sprintf(
+		'<span class="bai-palette-colophon"><span class="bai-colophon-title"><span class="bai-colophon-dot" style="background-color:%s"></span><span class="bai-colophon-name">%s</span></span><span class="bai-colophon-note">Inspired by %s</span></span>',
+		esc_attr( $meta['dot'] ),
+		esc_html( $meta['name'] ),
+		esc_html( $meta['inspired_by'] )
+	);
+} );
+
+/**
+ * Output theme-palette meta tag in document head.
+ */
+add_action( 'wp_head', function () {
+	$meta = workbench_get_palette_meta();
+	printf(
+		'<meta name="theme-palette" content="%s — %s">' . "\n",
+		esc_attr( $meta['name'] ),
+		esc_attr( $meta['full_story'] )
+	);
+}, 2 );
+

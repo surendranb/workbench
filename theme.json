@@ -19,27 +19,27 @@
 			"custom": true,
 			"defaultPalette": false,
 			"palette": [
-				{ "slug": "page", "color": "#fef6e4", "name": "Studio Cream Canvas" },
-				{ "slug": "ink", "color": "#001858", "name": "Studio Deep Navy" },
-				{ "slug": "accent", "color": "#f582ae", "name": "Studio Electric Pink" },
-				{ "slug": "secondary", "color": "#008b99", "name": "Studio Luminous Teal" },
-				{ "slug": "sidebar", "color": "#f4e5c2", "name": "Sunlight Biscuit Rail" },
-				{ "slug": "surface", "color": "#ffffff", "name": "Pure White Surface" },
-				{ "slug": "title", "color": "#001858", "name": "Studio Deep Navy Title" },
-				{ "slug": "body", "color": "#172c69", "name": "Rich Studio Navy Body" },
-				{ "slug": "lede", "color": "#263f82", "name": "Studio Navy Lede" },
-				{ "slug": "muted", "color": "#52669e", "name": "Studio Navy Muted" },
-				{ "slug": "faint", "color": "#8898c7", "name": "Faint" },
-				{ "slug": "border", "color": "#decba4", "name": "Warm Cream Border" },
-				{ "slug": "hairline", "color": "#ebdcc0", "name": "Hairline" },
-				{ "slug": "accent-strong", "color": "#db2777", "name": "Accent Strong" },
-				{ "slug": "accent-wash", "color": "#fdf2f6", "name": "Pink Accent Wash" },
-				{ "slug": "accent-border", "color": "#fbcfe8", "name": "Pink Accent Border" },
-				{ "slug": "accent-text", "color": "#9d174d", "name": "Pink Accent Text" },
-				{ "slug": "secondary-wash", "color": "#e6f9fa", "name": "Teal Wash" },
-				{ "slug": "secondary-border", "color": "#a3eaee", "name": "Teal Border" },
-				{ "slug": "secondary-text", "color": "#00636d", "name": "Teal Text" },
-				{ "slug": "live", "color": "#008b99", "name": "Live Indicator" }
+				{ "slug": "page", "color": "#fdf9f4", "name": "Dusk Sky Canvas" },
+				{ "slug": "ink", "color": "#0d241d", "name": "Shola Forest Shadow" },
+				{ "slug": "accent", "color": "#664de5", "name": "Neelakurunji Blossom Violet" },
+				{ "slug": "secondary", "color": "#ea580c", "name": "Dusk Sunset Orange" },
+				{ "slug": "sidebar", "color": "#edf5f0", "name": "Lush Shola Meadow Rail" },
+				{ "slug": "surface", "color": "#ffffff", "name": "Alpine Cloud Surface" },
+				{ "slug": "title", "color": "#0d241d", "name": "Shola Deep Title" },
+				{ "slug": "body", "color": "#1a3b30", "name": "Shola Moss Body" },
+				{ "slug": "lede", "color": "#295244", "name": "Shola Canopy Lede" },
+				{ "slug": "muted", "color": "#4d6e61", "name": "Pine Mist Muted" },
+				{ "slug": "faint", "color": "#7e9c90", "name": "Distant Ridge Faint" },
+				{ "slug": "border", "color": "#cde0d5", "name": "Alpine Meadow Border" },
+				{ "slug": "hairline", "color": "#dfede5", "name": "Shola Hairline" },
+				{ "slug": "accent-strong", "color": "#5137d1", "name": "Deep Kurinji Petal" },
+				{ "slug": "accent-wash", "color": "#f3effd", "name": "Violet Blossom Wash" },
+				{ "slug": "accent-border", "color": "#ded5fb", "name": "Violet Blossom Border" },
+				{ "slug": "accent-text", "color": "#4a32be", "name": "Violet Blossom Text" },
+				{ "slug": "secondary-wash", "color": "#fff4ea", "name": "Sunset Glow Wash" },
+				{ "slug": "secondary-border", "color": "#fed7aa", "name": "Sunset Glow Border" },
+				{ "slug": "secondary-text", "color": "#c2410c", "name": "Sunset Dusk Text" },
+				{ "slug": "live", "color": "#664de5", "name": "Blooming Kurinji Indicator" }
 			]
 		},
 		"typography": {
@@ -208,7 +208,7 @@
 				"border": { "radius": "8px" },
 				"color": {
 					"background": "var(--wp--preset--color--accent)",
-					"text": "#001858"
+					"text": "#ffffff"
 				},
 				"typography": {
 					"fontWeight": "800",

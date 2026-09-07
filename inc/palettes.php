@@ -20,7 +20,7 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 	if ( ! $palette_slug ) {
 		$palette_slug = ! empty( $_GET['palette'] ) 
 			? sanitize_key( $_GET['palette'] ) 
-			: 'studio-electric';
+			: 'neelakurunji';
 	}
 
 	$legacy_map = array(
@@ -33,50 +33,63 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 		'chaparral-dusk' => 'nordic-pine',
 		'rann-mirage'    => 'drafting-blueprint',
 		'happy-hues'     => 'studio-electric',
+		'kurinji'        => 'neelakurunji',
 	);
 	if ( isset( $legacy_map[ $palette_slug ] ) ) {
 		$palette_slug = $legacy_map[ $palette_slug ];
 	}
 
 	$font_map = array(
-		'cobalt-precision'   => array(
-			'family'  => "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-			'weight'  => '750',
-			'spacing' => '-0.035em',
-			'kicker'  => 'normal',
-		),
-		'terracotta-sun'     => array(
-			'family'  => "'Newsreader', 'Iowan Old Style', Georgia, serif",
-			'weight'  => '700',
-			'spacing' => '-0.02em',
-			'kicker'  => 'italic',
-		),
-		'nordic-pine'        => array(
-			'family'  => "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-			'weight'  => '700',
-			'spacing' => '-0.03em',
-			'kicker'  => 'normal',
-		),
-		'drafting-blueprint' => array(
-			'family'  => "'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif",
-			'weight'  => '700',
-			'spacing' => '-0.03em',
-			'kicker'  => 'normal',
+		'neelakurunji'       => array(
+			'family'   => "'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif",
+			'weight'   => '800',
+			'spacing'  => '-0.035em',
+			'kicker'   => 'normal',
+			'btn_text' => '#ffffff',
 		),
 		'studio-electric'    => array(
-			'family'  => "'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif",
-			'weight'  => '800',
-			'spacing' => '-0.035em',
-			'kicker'  => 'normal',
+			'family'   => "'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif",
+			'weight'   => '800',
+			'spacing'  => '-0.035em',
+			'kicker'   => 'normal',
+			'btn_text' => '#001858',
+		),
+		'cobalt-precision'   => array(
+			'family'   => "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+			'weight'   => '750',
+			'spacing'  => '-0.035em',
+			'kicker'   => 'normal',
+			'btn_text' => '#ffffff',
+		),
+		'terracotta-sun'     => array(
+			'family'   => "'Newsreader', 'Iowan Old Style', Georgia, serif",
+			'weight'   => '700',
+			'spacing'  => '-0.02em',
+			'kicker'   => 'italic',
+			'btn_text' => '#ffffff',
+		),
+		'nordic-pine'        => array(
+			'family'   => "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+			'weight'   => '700',
+			'spacing'  => '-0.03em',
+			'kicker'   => 'normal',
+			'btn_text' => '#ffffff',
+		),
+		'drafting-blueprint' => array(
+			'family'   => "'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif",
+			'weight'   => '700',
+			'spacing'  => '-0.03em',
+			'kicker'   => 'normal',
+			'btn_text' => '#ffffff',
 		),
 	);
 
-	$font_cfg = isset( $font_map[ $palette_slug ] ) ? $font_map[ $palette_slug ] : $font_map['cobalt-precision'];
+	$font_cfg = isset( $font_map[ $palette_slug ] ) ? $font_map[ $palette_slug ] : $font_map['neelakurunji'];
 
 	$file = get_stylesheet_directory() . "/styles/{$palette_slug}.json";
 	if ( ! file_exists( $file ) ) {
-		$palette_slug = 'cobalt-precision';
-		$file = get_stylesheet_directory() . "/styles/cobalt-precision.json";
+		$palette_slug = 'neelakurunji';
+		$file = get_stylesheet_directory() . "/styles/neelakurunji.json";
 		if ( ! file_exists( $file ) ) {
 			return '';
 		}
@@ -96,6 +109,7 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 	$css .= "  --wb-font-heading: {$font_cfg['family']} !important;\n";
 	$css .= "  --wb-heading-weight: {$font_cfg['weight']} !important;\n";
 	$css .= "  --wb-heading-spacing: {$font_cfg['spacing']} !important;\n";
+	$css .= "  --wb-btn-text: {$font_cfg['btn_text']} !important;\n";
 	$css .= "}\n";
 	$css .= '
 	/* Structural Contrast & Atmosphere Engine */
@@ -203,14 +217,14 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 	}
 	/* Kicker capsule */
 	.bai-kicker {
-		background-color: var(--wp--preset--color--accent-wash) !important;
-		border: 1px solid var(--wp--preset--color--accent-border) !important;
-		color: var(--wp--preset--color--accent-text) !important;
-		box-shadow: 0 1px 4px color-mix(in srgb, var(--wp--preset--color--accent) 15%, transparent) !important;
+		background-color: var(--wp--preset--color--secondary-wash, var(--wp--preset--color--accent-wash)) !important;
+		border: 1px solid var(--wp--preset--color--secondary-border, var(--wp--preset--color--accent-border)) !important;
+		color: var(--wp--preset--color--secondary-text, var(--wp--preset--color--accent-text)) !important;
+		box-shadow: 0 1px 4px color-mix(in srgb, var(--wp--preset--color--secondary) 15%, transparent) !important;
 	}
 	.bai-kicker::before {
-		background: var(--wp--preset--color--accent) !important;
-		box-shadow: 0 0 0 2.5px var(--wp--preset--color--accent-border) !important;
+		background: var(--wp--preset--color--secondary, var(--wp--preset--color--accent)) !important;
+		box-shadow: 0 0 0 2.5px var(--wp--preset--color--secondary-border, var(--wp--preset--color--accent-border)) !important;
 	}
 	/* Metadata pills */
 	.bai-tech-pill, .bai-chip-row .bai-tech-pill {
@@ -223,7 +237,7 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 	/* Buttons & Tactile Feedback */
 	.wp-block-button:not(.is-style-outline) .wp-block-button__link, .bai-newsletter-btn {
 		background-color: var(--wp--preset--color--accent) !important;
-		color: var(--wp--preset--color--ink, #001858) !important;
+		color: var(--wb-btn-text, #ffffff) !important;
 		border: 1px solid var(--wp--preset--color--accent) !important;
 		font-weight: 800 !important;
 		letter-spacing: -0.01em !important;

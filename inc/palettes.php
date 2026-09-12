@@ -20,7 +20,7 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 	if ( ! $palette_slug ) {
 		$palette_slug = ! empty( $_GET['palette'] ) 
 			? sanitize_key( $_GET['palette'] ) 
-			: 'neelakurunji';
+			: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'sunset' );
 	}
 
 	$legacy_map = array(
@@ -82,14 +82,56 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 			'kicker'   => 'normal',
 			'btn_text' => '#ffffff',
 		),
+		'san-diego'          => array(
+			'family'   => "'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif",
+			'weight'   => '700',
+			'spacing'  => '-0.03em',
+			'kicker'   => 'normal',
+			'btn_text' => '#ffffff',
+		),
+		'stanford'           => array(
+			'family'   => "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+			'weight'   => '750',
+			'spacing'  => '-0.035em',
+			'kicker'   => 'normal',
+			'btn_text' => '#ffffff',
+		),
+		'nandi'              => array(
+			'family'   => "'Newsreader', 'Iowan Old Style', Georgia, serif",
+			'weight'   => '700',
+			'spacing'  => '-0.02em',
+			'kicker'   => 'italic',
+			'btn_text' => '#ffffff',
+		),
+		'railroad'           => array(
+			'family'   => "'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif",
+			'weight'   => '700',
+			'spacing'  => '-0.03em',
+			'kicker'   => 'normal',
+			'btn_text' => '#ffffff',
+		),
+		'permafrost'         => array(
+			'family'   => "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+			'weight'   => '750',
+			'spacing'  => '-0.035em',
+			'kicker'   => 'normal',
+			'btn_text' => '#ffffff',
+		),
+		'sunset'             => array(
+			'family'   => "'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif",
+			'weight'   => '800',
+			'spacing'  => '-0.035em',
+			'kicker'   => 'normal',
+			'btn_text' => '#ffffff',
+		),
 	);
 
-	$font_cfg = isset( $font_map[ $palette_slug ] ) ? $font_map[ $palette_slug ] : $font_map['neelakurunji'];
+	$font_cfg = isset( $font_map[ $palette_slug ] ) ? $font_map[ $palette_slug ] : $font_map['sunset'];
 
 	$file = get_stylesheet_directory() . "/styles/{$palette_slug}.json";
 	if ( ! file_exists( $file ) ) {
-		$palette_slug = 'neelakurunji';
-		$file = get_stylesheet_directory() . "/styles/neelakurunji.json";
+		$palette_slug = 'sunset';
+		$file = get_stylesheet_directory() . "/styles/sunset.json";
 		if ( ! file_exists( $file ) ) {
 			return '';
 		}
@@ -99,6 +141,10 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 	if ( empty( $data['settings']['color']['palette'] ) ) {
 		return '';
 	}
+
+	$photo_rel = "assets/images/palettes/{$palette_slug}.webp";
+	$has_photo = file_exists( get_stylesheet_directory() . '/' . $photo_rel );
+	$photo_css = $has_photo ? "url('" . esc_url( get_stylesheet_directory_uri() . '/' . $photo_rel ) . "')" : 'none';
 
 	$css = "<style id=\"wb-palette-override\">\n:root {\n";
 	foreach ( $data['settings']['color']['palette'] as $col ) {
@@ -110,11 +156,37 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 	$css .= "  --wb-heading-weight: {$font_cfg['weight']} !important;\n";
 	$css .= "  --wb-heading-spacing: {$font_cfg['spacing']} !important;\n";
 	$css .= "  --wb-btn-text: {$font_cfg['btn_text']} !important;\n";
+	$css .= "  --wb-palette-bg-image: {$photo_css};\n";
 	$css .= "}\n";
 	$css .= '
 	/* Structural Contrast & Atmosphere Engine */
-	body, .wp-site-blocks { 
+	body {
+		position: relative;
 		background-color: var(--wp--preset--color--page) !important; 
+		color: var(--wp--preset--color--body) !important; 
+	}
+	body::before {
+		content: "";
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 520px;
+		background-image: var(--wb-palette-bg-image);
+		background-size: cover;
+		background-position: center 30%;
+		background-repeat: no-repeat;
+		opacity: 0.22;
+		mix-blend-mode: multiply;
+		mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.75) 60%, transparent 100%);
+		-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.75) 60%, transparent 100%);
+		pointer-events: none;
+		z-index: 0;
+	}
+	.wp-site-blocks { 
+		position: relative;
+		z-index: 1;
+		background-color: transparent !important; 
 		color: var(--wp--preset--color--body) !important; 
 	}
 	h1, .wp-block-post-title {
@@ -385,7 +457,9 @@ add_action( 'wp_head', function () {
  */
 function workbench_get_palette_meta( $slug = '' ) {
 	if ( ! $slug ) {
-		$slug = ! empty( $_GET['palette'] ) ? sanitize_key( $_GET['palette'] ) : 'neelakurunji';
+		$slug = ! empty( $_GET['palette'] ) 
+			? sanitize_key( $_GET['palette'] ) 
+			: ( ! empty( $_COOKIE['wb_active_palette'] ) ? sanitize_key( $_COOKIE['wb_active_palette'] ) : 'sunset' );
 	}
 
 	$legacy_map = array(
@@ -441,9 +515,51 @@ function workbench_get_palette_meta( $slug = '' ) {
 			'full_story'  => 'Inspired by cool granite ridges and precision instrument engineering.',
 			'dot'         => '#2563eb',
 		),
+		'san-diego'          => array(
+			'name'        => 'San Diego',
+			'inspired_by' => 'the sun setting into the Pacific swell through coastal palms',
+			'full_story'  => 'Inspired by the fiery sun dropping into the Pacific swell through silhouetted coastal palms and rolling ocean surf in San Diego.',
+			'dot'         => '#ea580c',
+			'photo'       => 'assets/images/palettes/san-diego.webp',
+		),
+		'stanford'           => array(
+			'name'        => 'Stanford',
+			'inspired_by' => 'the Dish trail & sunlit California live oaks',
+			'full_story'  => 'Inspired by the Stanford Dish trail overlooking the Santa Clara Valley under a cloudless California blue sky.',
+			'dot'         => '#1d6ecb',
+			'photo'       => 'assets/images/palettes/stanford.webp',
+		),
+		'nandi'              => array(
+			'name'        => 'Nandi',
+			'inspired_by' => 'monsoon mist draping the monolithic fortress hill',
+			'full_story'  => 'Inspired by ploughed Deccan red earth, coconut groves, and monsoon clouds draping the granite monolith of Nandi Hills.',
+			'dot'         => '#c2410c',
+			'photo'       => 'assets/images/palettes/nandi.webp',
+		),
+		'railroad'           => array(
+			'name'        => 'Railroad',
+			'inspired_by' => 'an Arakkonam WAP-4 electric locomotive crossing sunlit tracks',
+			'full_story'  => 'Inspired by the scarlet crimson and golden hazard stripe of an Arakkonam WAP-4 electric locomotive on the Southern Railway line.',
+			'dot'         => '#c0262b',
+			'photo'       => 'assets/images/palettes/railroad.webp',
+		),
+		'permafrost'         => array(
+			'name'        => 'Permafrost',
+			'inspired_by' => 'glacial fjords & ice sheets from 35,000 feet',
+			'full_story'  => 'Inspired by stratospheric cobalt skies, turquoise glacial meltwater, and frozen permafrost fjords viewed from the flight deck.',
+			'dot'         => '#0284c7',
+			'photo'       => 'assets/images/palettes/permafrost.webp',
+		),
+		'sunset'             => array(
+			'name'        => 'Sunset',
+			'inspired_by' => 'fiery evening skies & silhouetted palmyra palms',
+			'full_story'  => 'Inspired by blazing orange horizon fire, dusk cirrus clouds, and the iconic silhouettes of palmyra palms across the Tamil Nadu countryside.',
+			'dot'         => '#ea580c',
+			'photo'       => 'assets/images/palettes/sunset.webp',
+		),
 	);
 
-	return isset( $registry[ $slug ] ) ? $registry[ $slug ] : $registry['neelakurunji'];
+	return isset( $registry[ $slug ] ) ? $registry[ $slug ] : $registry['sunset'];
 }
 
 /**
@@ -452,8 +568,19 @@ function workbench_get_palette_meta( $slug = '' ) {
 add_shortcode( 'workbench_palette_colophon', function () {
 	$meta = workbench_get_palette_meta();
 
+	$photo_badge = '';
+	if ( ! empty( $meta['photo'] ) && file_exists( get_stylesheet_directory() . '/' . $meta['photo'] ) ) {
+		$img_url = get_stylesheet_directory_uri() . '/' . $meta['photo'];
+		$photo_badge = sprintf(
+			'<img class="bai-colophon-photo" src="%s" alt="%s" width="22" height="22" style="width:22px;height:22px;border-radius:4px;object-fit:cover;vertical-align:middle;margin-right:6px;border:1px solid var(--wp--preset--color--border);display:inline-block;" />',
+			esc_url( $img_url ),
+			esc_attr( $meta['name'] )
+		);
+	}
+
 	return sprintf(
-		'<span class="bai-palette-colophon"><span class="bai-colophon-title"><span class="bai-colophon-dot" style="background-color:%s"></span><span class="bai-colophon-name">%s</span></span><span class="bai-colophon-note">Inspired by %s</span></span>',
+		'<span class="bai-palette-colophon"><span class="bai-colophon-title">%s<span class="bai-colophon-dot" style="background-color:%s"></span><span class="bai-colophon-name">%s</span></span><span class="bai-colophon-note">Inspired by %s</span></span>',
+		$photo_badge,
 		esc_attr( $meta['dot'] ),
 		esc_html( $meta['name'] ),
 		esc_html( $meta['inspired_by'] )

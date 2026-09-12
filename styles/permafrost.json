@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Permafrost",
+	"description": "Arctic aerial over glacial fjords: crisp ice-pack canvas, frozen fjord shelf rail, arctic basalt shadow ink, stratospheric deep cobalt accent, and electric glacial meltwater aqua.",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "page", "color": "#edf6f9", "name": "Glacial Ice-Pack Canvas" },
+				{ "slug": "ink", "color": "#061324", "name": "Arctic Basalt Shadow Ink" },
+				{ "slug": "accent", "color": "#1d4ed8", "name": "Stratospheric Deep Cobalt" },
+				{ "slug": "secondary", "color": "#0e7490", "name": "Glacial Meltwater Aqua" },
+				{ "slug": "sidebar", "color": "#d3e5ef", "name": "Frozen Fjord Shelf Rail" },
+				{ "slug": "surface", "color": "#ffffff", "name": "Pure Glacial Snow Surface" },
+				{ "slug": "title", "color": "#061324", "name": "Basalt Shadow Title" },
+				{ "slug": "body", "color": "#14253a", "name": "Arctic Navy Body" },
+				{ "slug": "lede", "color": "#1d3652", "name": "Arctic Lede" },
+				{ "slug": "muted", "color": "#4a6886", "name": "Polar Mist Muted" },
+				{ "slug": "faint", "color": "#7d9cb8", "name": "Faint" },
+				{ "slug": "border", "color": "#bcd3e3", "name": "Ice Shelf Border" },
+				{ "slug": "hairline", "color": "#d4e5f0", "name": "Frost Hairline" },
+				{ "slug": "accent-strong", "color": "#1e40af", "name": "Deep Stratosphere Cobalt" },
+				{ "slug": "accent-wash", "color": "#eff6ff", "name": "Cobalt Sky Wash" },
+				{ "slug": "accent-border", "color": "#bfdbfe", "name": "Cobalt Sky Border" },
+				{ "slug": "accent-text", "color": "#1d4ed8", "name": "Cobalt Sky Text" },
+				{ "slug": "secondary-wash", "color": "#ecfeff", "name": "Glacial Meltwater Wash" },
+				{ "slug": "secondary-border", "color": "#a5f3fc", "name": "Glacial Meltwater Border" },
+				{ "slug": "secondary-text", "color": "#0e7490", "name": "Glacial Meltwater Text" },
+				{ "slug": "live", "color": "#0284c7", "name": "Electric Glacier Indicator" }
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--page)",
+			"text": "var(--wp--preset--color--body)"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--geist)",
+					"fontWeight": "750",
+					"letterSpacing": "-0.035em"
+				},
+				"color": { "text": "var(--wp--preset--color--ink)" }
+			},
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--accent)",
+					"text": "#ffffff"
+				},
+				":hover": {
+					"color": {
+						"background": "var(--wp--preset--color--accent-strong)",
+						"text": "#ffffff"
+					}
+				}
+			},
+			"link": {
+				"color": { "text": "var(--wp--preset--color--secondary)" },
+				":hover": {
+					"color": { "text": "var(--wp--preset--color--accent)" }
+				}
+			}
+		}
+	}
+}

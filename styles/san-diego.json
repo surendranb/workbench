@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "San Diego",
+	"description": "Pacific oceanfront sunset: warm sunset peach canvas, cool surf spray rail, deep ocean silhouette navy ink, blazing horizon sunset flare orange, and electric Pacific swell blue.",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "page", "color": "#fdf0e2", "name": "Sunset Peach Canvas" },
+				{ "slug": "ink", "color": "#061324", "name": "Deep Ocean Silhouette Navy" },
+				{ "slug": "accent", "color": "#ea580c", "name": "Blazing Horizon Sunset Flare" },
+				{ "slug": "secondary", "color": "#0284c7", "name": "Electric Pacific Swell Blue" },
+				{ "slug": "sidebar", "color": "#e3eff7", "name": "Pacific Surf Spray Rail" },
+				{ "slug": "surface", "color": "#ffffff", "name": "Pure White Foam Surface" },
+				{ "slug": "title", "color": "#061324", "name": "Ocean Silhouette Title" },
+				{ "slug": "body", "color": "#14243b", "name": "Deep Pacific Navy Body" },
+				{ "slug": "lede", "color": "#1f385c", "name": "Pacific Lede" },
+				{ "slug": "muted", "color": "#4a658a", "name": "Surf Spray Muted" },
+				{ "slug": "faint", "color": "#7e9abb", "name": "Faint" },
+				{ "slug": "border", "color": "#fed7aa", "name": "Sunset Horizon Border" },
+				{ "slug": "hairline", "color": "#fde8d0", "name": "Sunset Hairline" },
+				{ "slug": "accent-strong", "color": "#c2410c", "name": "Deep Sunset Ember" },
+				{ "slug": "accent-wash", "color": "#ffedd5", "name": "Sunset Glow Wash" },
+				{ "slug": "accent-border", "color": "#fdba74", "name": "Sunset Glow Border" },
+				{ "slug": "accent-text", "color": "#9a3412", "name": "Sunset Glow Text" },
+				{ "slug": "secondary-wash", "color": "#e0f2fe", "name": "Pacific Swell Wash" },
+				{ "slug": "secondary-border", "color": "#7dd3fc", "name": "Pacific Swell Border" },
+				{ "slug": "secondary-text", "color": "#0369a1", "name": "Pacific Swell Text" },
+				{ "slug": "live", "color": "#ea580c", "name": "Sunset Indicator" }
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--page)",
+			"text": "var(--wp--preset--color--body)"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--space-grotesk)",
+					"fontWeight": "700",
+					"letterSpacing": "-0.03em"
+				},
+				"color": { "text": "var(--wp--preset--color--ink)" }
+			},
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--accent)",
+					"text": "#ffffff"
+				},
+				":hover": {
+					"color": {
+						"background": "var(--wp--preset--color--accent-strong)",
+						"text": "#ffffff"
+					}
+				}
+			},
+			"link": {
+				"color": { "text": "var(--wp--preset--color--secondary)" },
+				":hover": {
+					"color": { "text": "var(--wp--preset--color--accent)" }
+				}
+			}
+		}
+	}
+}

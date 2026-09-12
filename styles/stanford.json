@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Stanford",
+	"description": "California foothills & Dish trail: sun-cured golden oat savanna canvas, fresh live oak sage rail, deep California oak shadow ink, brilliant California sky cobalt accent, and sun-struck chaparral gold.",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "page", "color": "#faf2dc", "name": "Golden Oat Savanna Canvas" },
+				{ "slug": "ink", "color": "#071a10", "name": "California Oak Shadow Ink" },
+				{ "slug": "accent", "color": "#2563eb", "name": "California Sky Cobalt" },
+				{ "slug": "secondary", "color": "#d97706", "name": "Sun-Struck Chaparral Gold" },
+				{ "slug": "sidebar", "color": "#e3eee2", "name": "Live Oak Sage Rail" },
+				{ "slug": "surface", "color": "#ffffff", "name": "Pure White Surface" },
+				{ "slug": "title", "color": "#071a10", "name": "Oak Shadow Title" },
+				{ "slug": "body", "color": "#182c20", "name": "Woodland Evergreen Charcoal Body" },
+				{ "slug": "lede", "color": "#22402f", "name": "Woodland Lede" },
+				{ "slug": "muted", "color": "#4d6b59", "name": "Foothill Sage Muted" },
+				{ "slug": "faint", "color": "#819f8d", "name": "Faint" },
+				{ "slug": "border", "color": "#dfd4b8", "name": "Savanna Straw Border" },
+				{ "slug": "hairline", "color": "#eee5ce", "name": "Savanna Hairline" },
+				{ "slug": "accent-strong", "color": "#1d4ed8", "name": "Deep Sky Cobalt" },
+				{ "slug": "accent-wash", "color": "#eff6ff", "name": "Sky Cobalt Wash" },
+				{ "slug": "accent-border", "color": "#bfdbfe", "name": "Sky Cobalt Border" },
+				{ "slug": "accent-text", "color": "#1d4ed8", "name": "Sky Cobalt Text" },
+				{ "slug": "secondary-wash", "color": "#fef3c7", "name": "Chaparral Gold Wash" },
+				{ "slug": "secondary-border", "color": "#fde68a", "name": "Chaparral Gold Border" },
+				{ "slug": "secondary-text", "color": "#b45309", "name": "Chaparral Gold Text" },
+				{ "slug": "live", "color": "#2563eb", "name": "California Sky Indicator" }
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--page)",
+			"text": "var(--wp--preset--color--body)"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--geist)",
+					"fontWeight": "750",
+					"letterSpacing": "-0.035em"
+				},
+				"color": { "text": "var(--wp--preset--color--ink)" }
+			},
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--accent)",
+					"text": "#ffffff"
+				},
+				":hover": {
+					"color": {
+						"background": "var(--wp--preset--color--accent-strong)",
+						"text": "#ffffff"
+					}
+				}
+			},
+			"link": {
+				"color": { "text": "var(--wp--preset--color--secondary)" },
+				":hover": {
+					"color": { "text": "var(--wp--preset--color--accent)" }
+				}
+			}
+		}
+	}
+}

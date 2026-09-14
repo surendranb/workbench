@@ -1,17 +1,17 @@
 /*
 Theme Name: Workbench
-Theme URI: https://builditwithai.xyz
+Theme URI: https://github.com/surendranb/workbench
 Author: Surendran B
 Author URI: https://surendranb.com
-Description: A two-column showcase shell for builders — fixed secondary nav, page-list sidebar, filterable work index, project notes card, palette & typography style variations. Built with WordPress primitives only.
+Description: An editorial, high-density two-column block theme for developers, AI studios, and systems labs. Features an ergonomic workstation shell, native full site editing, and photo-anchored dual-tone color palettes.
 Version: 1.0.0
 Requires at least: 6.5
-Tested up to: 7.1
+Tested up to: 6.7
 Requires PHP: 8.0
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: workbench
-Tags: blog, two-columns, right-sidebar, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-themes, wide-blocks
+Tags: block-patterns, full-site-editing, two-columns, custom-menu, custom-logo, editor-style, featured-images, wide-blocks, blog
 */
 
 /* ==========================================================================
@@ -430,7 +430,7 @@ Tags: blog, two-columns, right-sidebar, custom-menu, custom-logo, editor-style, 
 }
 
 /* ==========================================================================
-   Project sub-navigation bar ([workbench_project_nav])
+   Project sub-navigation bar (workbench/project-nav)
    ========================================================================== */
 .bai-project-nav {
 	margin: 12px 0 32px 0;
@@ -531,7 +531,7 @@ Tags: blog, two-columns, right-sidebar, custom-menu, custom-logo, editor-style, 
 
 
 /* ==========================================================================
-   Project page notes rail (rendered via [workbench_notes_card])
+   Project page notes rail (workbench/project-notes)
    ========================================================================== */
 .bai-notes-card .wp-block-buttons {
 	display: flex;

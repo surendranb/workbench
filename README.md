@@ -22,20 +22,22 @@ workbench/
 ├── theme.json          # Block theme schema, token bindings, layout constraints
 ├── functions.php       # Enqueuing, query loop modifiers, shortcode handlers
 ├── inc/
-│   └── newsletter.php  # Substack modal, inline newsletter card, project footer
+│   └── palettes.php    # Color palette helpers & theme switch engine
 ├── parts/
-│   ├── header.html     # Fixed top header with external social/studio links
+│   ├── header.html     # Top navigation header
 │   └── sidebar.html    # Fixed rail containing filter and project query loop
 ├── templates/
 │   ├── front-page.html # Studio index template
-│   ├── project.html    # Project showcase layout with [workbench_project_nav]
+│   ├── project.html    # Project showcase layout with project navigation pattern
 │   ├── single.html     # Single article template
 │   ├── page.html       # Generic page template
 │   ├── index.html      # Fallback query template
 │   └── 404.html        # Clean 404 error page
 ├── patterns/
-│   ├── project-notes.php
-│   └── showcase-hero.php
+│   ├── newsletter-card.php # Email newsletter subscription card
+│   ├── project-nav.php     # Dynamic sub-navigation bar (Overview, Setup, Docs, external links)
+│   ├── project-notes.php   # Sticky notes rail
+│   └── showcase-hero.php   # Hero banner
 ├── styles/             # FSE Style variations
 │   ├── happy-hues.json # Built-in Happy Hues #17 palette
 │   ├── cobalt.json
@@ -81,19 +83,18 @@ Workbench streamlines developer project portfolios by establishing a strict 3-ti
 ```
 
 ### Template Setup
-Assign the **Project (with notes card)** (`project`) template to the parent page and each of its child pages.
+Assign the **Project** (`project`) template to the parent page and each of its child pages.
 
-### Shortcode Integration
-- `[workbench_project_nav]`: Placed above the content. Automatically inspects the parent ID, discovers all child pages matching `setup` and `docs`, and outputs cohesive navigation tabs.
-- `[workbench_project_footer]`: Placed below the content. Automatically renders the conversion card, source links, and newsletter box.
-- `[workbench_search_box]`: Placed in the sidebar. Real-time DOM filtering for fast project lookup.
-- `[workbench_newsletter_box]`: Embeds an inline Substack subscription form.
-- `[workbench_copyright]`: Dynamically outputs the current copyright notice.
+### Block Patterns
+- `workbench/project-nav`: Placed above the content. Automatically inspects the parent ID, discovers all child pages matching `setup` and `docs`, and outputs cohesive navigation tabs.
+- `workbench/newsletter-card`: Placed below content or wherever subscription callouts are needed.
+- `workbench/project-notes`: Sidebar/rail card summarizing project status, tech stack pills, and outbound source links.
+- `workbench/showcase-hero`: Tinted landing hero for portfolios.
 
 ### Post Meta Fields
 Populate custom post meta on the parent page to generate outbound tab links:
 - `github_url`: Outbound GitHub repository URL
-- `website_url`: Outbound live deployment URL
+- `external_url` (or `website_url`): Outbound live deployment URL
 - `pypi_url`: Outbound PyPI distribution URL
 - `npm_url`: Outbound npm package URL
 - `wporg_url`: Outbound WordPress plugin directory URL

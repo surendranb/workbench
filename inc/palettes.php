@@ -563,9 +563,9 @@ function workbench_get_palette_meta( $slug = '' ) {
 }
 
 /**
- * [workbench_palette_colophon] shortcode: outputs the palette attribution line.
+ * Render the palette colophon attribution HTML.
  */
-add_shortcode( 'workbench_palette_colophon', function () {
+function workbench_get_palette_colophon_html() {
 	$meta = workbench_get_palette_meta();
 
 	$photo_badge = '';
@@ -579,13 +579,27 @@ add_shortcode( 'workbench_palette_colophon', function () {
 	}
 
 	return sprintf(
-		'<span class="bai-palette-colophon"><span class="bai-colophon-title">%s<span class="bai-colophon-dot" style="background-color:%s"></span><span class="bai-colophon-name">%s</span></span><span class="bai-colophon-note">Inspired by %s</span></span>',
+		'<span class="bai-palette-colophon"><span class="bai-colophon-title">%s<span class="bai-colophon-dot" style="background-color:%s"></span><span class="bai-colophon-name">%s</span></span><span class="bai-colophon-note">%s</span></span>',
 		$photo_badge,
 		esc_attr( $meta['dot'] ),
 		esc_html( $meta['name'] ),
-		esc_html( $meta['inspired_by'] )
+		sprintf(
+			/* translators: %s: inspiration description */
+			esc_html__( 'Inspired by %s', 'workbench' ),
+			esc_html( $meta['inspired_by'] )
+		)
 	);
-} );
+}
+
+/**
+ * Filter paragraph blocks with .bai-side-colophon to inject active palette attribution.
+ */
+add_filter( 'render_block_core/paragraph', function ( $block_content, $block ) {
+	if ( ! empty( $block['attrs']['className'] ) && false !== strpos( $block['attrs']['className'], 'bai-side-colophon' ) ) {
+		return sprintf( '<p class="bai-side-colophon wp-block-paragraph">%s</p>', workbench_get_palette_colophon_html() );
+	}
+	return $block_content;
+}, 10, 2 );
 
 /**
  * Output theme-palette meta tag in document head.

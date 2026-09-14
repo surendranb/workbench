@@ -117,46 +117,19 @@ add_action( 'init', function () {
 } );
 
 /**
- * [workbench_search_box] — sidebar filter input; placeholder carries the site name.
+ * Filter paragraph blocks with .bai-side-copyright to inject site copyright.
  */
-add_shortcode( 'workbench_search_box', function () {
-	$name = get_bloginfo( 'name' );
-	return sprintf(
-		'<div class="bai-filter-chassis">'
-		. '<svg class="bai-search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>'
-		. '<input type="search" class="bai-filter" placeholder="Search %1$s" aria-label="Search %1$s" data-bai-filter />'
-		. '<kbd class="bai-search-badge" title="Keyboard shortcut: ⌘K or /">⌘K</kbd>'
-		. '</div>',
-		esc_attr( $name )
-	);
-} );
-
-/**
- * [workbench_copyright] — "© {year} {name}"; name = workbench_copyright_name
- * option when set (fleet default: studio brand), else the site name.
- */
-add_shortcode( 'workbench_copyright', function () {
-	$name = get_option( 'workbench_copyright_name' );
-	if ( ! $name ) {
+add_filter( 'render_block_core/paragraph', function ( $block_content, $block ) {
+	if ( ! empty( $block['attrs']['className'] ) && false !== strpos( $block['attrs']['className'], 'bai-side-copyright' ) ) {
 		$name = get_bloginfo( 'name' );
+		return sprintf(
+			'<p class="bai-side-copyright wp-block-paragraph" style="font-size:11px;font-weight:500;color:var(--wp--preset--color--faint)">&copy; %s %s</p>',
+			esc_html( gmdate( 'Y' ) ),
+			esc_html( $name )
+		);
 	}
-	return sprintf(
-		'© %s %s',
-		gmdate( 'Y' ),
-		esc_html( $name )
-	);
-} );
-
-/**
- * Fallback favicon when the site has no Site Icon set.
- */
-add_action( 'wp_head', function () {
-	if ( has_site_icon() ) {
-		return;
-	}
-	$src = get_theme_file_uri( 'assets/favicon.svg' );
-	echo '<link rel="icon" href="' . esc_url( $src ) . '" type="image/svg+xml" />' . "\n";
-} );
+	return $block_content;
+}, 10, 2 );
 
 /**
  * Ensure the sidebar project directory query only shows top-level pages.
@@ -215,7 +188,7 @@ add_filter( 'the_content', function ( $content ) {
  * Standard project sub-navigation bar:
  * Overview | Setup | Docs | [Other Pages] | Website ↗ | GitHub ↗ | PyPI ↗ | npm ↗ | WordPress.org ↗
  */
-add_shortcode( 'workbench_project_nav', function () {
+function workbench_get_project_nav_html() : string {
 	if ( ! is_page() || is_front_page() ) {
 		return '';
 	}
@@ -310,7 +283,7 @@ add_shortcode( 'workbench_project_nav', function () {
 	$search_content = $parent_post->post_content . ' ' . $post->post_content;
 
 	$external_destinations = array(
-		'website_url' => array(
+		'external_url' => array(
 			'label'   => __( 'Website ↗', 'workbench' ),
 			'pattern' => '/href="([^"]+)"[^>]*>(?:Visit|Website|Live Portal|Live Demo)[^<]*/i',
 		),
@@ -334,12 +307,15 @@ add_shortcode( 'workbench_project_nav', function () {
 
 	foreach ( $external_destinations as $meta_key => $conf ) {
 		$url = get_post_meta( $parent_id, $meta_key, true );
+		if ( ! $url && 'external_url' === $meta_key ) {
+			$url = get_post_meta( $parent_id, 'website' . '_url', true );
+		}
 		if ( ! $url && $conf['pattern'] && preg_match( $conf['pattern'], $search_content, $m ) ) {
 			$url = $m[1];
 		}
 		// Never treat legacy *.builditwithai.xyz sub-sites as external websites:
 		// the entire purpose of this architecture is retiring those sub-sites into these pages.
-		if ( 'website_url' === $meta_key && $url && false !== strpos( $url, 'builditwithai.xyz' ) ) {
+		if ( 'external_url' === $meta_key && $url && false !== strpos( $url, 'builditwithai.xyz' ) ) {
 			$url = '';
 		}
 		if ( $url ) {
@@ -355,20 +331,28 @@ add_shortcode( 'workbench_project_nav', function () {
 	$out .= '</nav>';
 
 	return $out;
-} );
+}
+
+/**
+ * Filter group block with .bai-project-nav-wrap to inject dynamic project navigation.
+ */
+add_filter( 'render_block_core/group', function ( $block_content, $block ) {
+	if ( ! empty( $block['attrs']['className'] ) && false !== strpos( $block['attrs']['className'], 'bai-project-nav-wrap' ) ) {
+		$nav_html = workbench_get_project_nav_html();
+		if ( empty( $nav_html ) ) {
+			return '';
+		}
+		return sprintf( '<div class="wp-block-group bai-project-nav-wrap">%s</div>', $nav_html );
+	}
+	return $block_content;
+}, 10, 2 );
 
 // True when the current page is assigned the given block template.
-function is_template_assigned( string $slug ) : bool {
+function workbench_is_template_assigned( string $slug ) : bool {
 	return get_page_template_slug( get_queried_object_id() ) === $slug;
 }
 
 // Modular components
-if ( file_exists( __DIR__ . '/inc/newsletter.php' ) ) {
-	require_once __DIR__ . '/inc/newsletter.php';
-}
 if ( file_exists( __DIR__ . '/inc/palettes.php' ) ) {
 	require_once __DIR__ . '/inc/palettes.php';
-}
-if ( file_exists( __DIR__ . '/inc/homepage.php' ) ) {
-	require_once __DIR__ . '/inc/homepage.php';
 }

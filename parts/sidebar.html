@@ -11,14 +11,18 @@
 
 	<!-- wp:html -->
 	<div class="bai-side-filter">
-		[workbench_search_box]
+		<div class="bai-filter-chassis">
+			<svg class="bai-search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+			<input type="search" class="bai-filter" placeholder="Search pages..." aria-label="Search pages" data-bai-filter />
+			<kbd class="bai-search-badge" title="Keyboard shortcut: ⌘K or /">⌘K</kbd>
+		</div>
 	</div>
 	<!-- /wp:html -->
 
 	<!-- wp:group {"className":"bai-side-nav","layout":{"type":"default"}} -->
 	<div class="wp-block-group bai-side-nav">
 
-		<!-- wp:query {"queryId":0,"query":{"perPage":100,"pages":0,"offset":0,"postType":"page","order":"asc","orderBy":"menu_order","author":"","search":"","exclude":[3,4],"sticky":"","inherit":false},"className":"bai-nav-query"} -->
+		<!-- wp:query {"queryId":0,"query":{"perPage":100,"pages":0,"offset":0,"postType":"page","order":"asc","orderBy":"menu_order","author":"","search":"","exclude":[],"sticky":"","inherit":false},"className":"bai-nav-query"} -->
 		<div class="wp-block-query bai-nav-query">
 
 			<!-- wp:post-template {"className":"bai-nav-list"} -->
@@ -51,11 +55,11 @@
 	<div class="wp-block-group bai-side-foot" style="border-top-color:var(--wp--preset--color--border);border-top-width:1px;padding:14px 20px">
 
 	<!-- wp:paragraph {"className":"bai-side-colophon"} -->
-	<p class="bai-side-colophon">[workbench_palette_colophon]</p>
+	<p class="bai-side-colophon"></p>
 	<!-- /wp:paragraph -->
 
-	<!-- wp:paragraph {"style":{"typography":{"fontSize":"11px","fontWeight":"500"},"color":{"text":"var(--wp--preset--color--faint)"}}} -->
-	<p style="font-size:11px;font-weight:500;color:var(--wp--preset--color--faint)">[workbench_copyright]</p>
+	<!-- wp:paragraph {"className":"bai-side-copyright","style":{"typography":{"fontSize":"11px","fontWeight":"500"},"color":{"text":"var(--wp--preset--color--faint)"}}} -->
+	<p class="bai-side-copyright" style="font-size:11px;font-weight:500;color:var(--wp--preset--color--faint)"></p>
 	<!-- /wp:paragraph -->
 
 	</div>

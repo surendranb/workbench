@@ -4,7 +4,7 @@ Theme URI: https://github.com/surendranb/workbench
 Author: Surendran B
 Author URI: https://surendranb.com
 Description: An editorial, high-density two-column block theme for developers, AI studios, and systems labs. Features an ergonomic workstation shell, native full site editing, and photo-anchored dual-tone color palettes.
-Version: 1.0.0
+Version: 1.0.1
 Requires at least: 6.5
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -443,10 +443,20 @@ Tags: block-patterns, full-site-editing, two-columns, custom-menu, custom-logo, 
 	margin-bottom: -1px;
 	flex-wrap: wrap;
 }
-.bai-project-nav-item {
+.bai-project-nav .wp-block-navigation__container {
+	display: flex;
+	gap: 28px;
+	align-items: center;
+	margin-bottom: -1px;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+}
+.bai-project-nav-item,
+.bai-project-nav .wp-block-navigation-item__content {
 	display: inline-flex;
 	align-items: center;
-	padding: 8px 0 12px 0;
+	padding: 8px 0 12px 0 !important;
 	font-size: 14px;
 	font-weight: 600;
 	color: var(--wp--preset--color--muted);
@@ -454,10 +464,13 @@ Tags: block-patterns, full-site-editing, two-columns, custom-menu, custom-logo, 
 	border-bottom: 2px solid transparent;
 	transition: color 0.15s ease, border-color 0.15s ease;
 }
-.bai-project-nav-item:hover {
+.bai-project-nav-item:hover,
+.bai-project-nav .wp-block-navigation-item__content:hover {
 	color: var(--wp--preset--color--title);
 }
-.bai-project-nav-item.is-active {
+.bai-project-nav-item.is-active,
+.bai-project-nav .wp-block-navigation-item.current-menu-item .wp-block-navigation-item__content,
+.bai-project-nav .wp-block-navigation-item__content[aria-current="page"] {
 	color: var(--wp--preset--color--ink);
 	border-bottom: 3px solid var(--wp--preset--color--accent);
 	font-weight: 750;

@@ -189,38 +189,38 @@ function workbench_get_palette_css( $palette_slug = '' ) {
 		background-color: transparent !important; 
 		color: var(--wp--preset--color--body) !important; 
 	}
-	h1, .wp-block-post-title {
-		font-family: var(--wb-font-heading) !important;
-		color: var(--wp--preset--color--ink) !important;
-		font-weight: var(--wb-heading-weight) !important;
-		letter-spacing: var(--wb-heading-spacing) !important;
-		line-height: 1.1 !important;
+	.wp-site-blocks h1, .wp-site-blocks .wp-block-post-title {
+		font-family: var(--wb-font-heading);
+		color: var(--wp--preset--color--ink);
+		font-weight: var(--wb-heading-weight);
+		letter-spacing: var(--wb-heading-spacing);
+		line-height: 1.1;
 	}
-	h2, h3, h4 {
-		font-family: var(--wb-font-heading) !important;
-		color: var(--wp--preset--color--title) !important;
-		font-weight: var(--wb-heading-weight) !important;
-		letter-spacing: var(--wb-heading-spacing) !important;
-		line-height: 1.25 !important;
+	.wp-site-blocks h2, .wp-site-blocks h3, .wp-site-blocks h4 {
+		font-family: var(--wb-font-heading);
+		color: var(--wp--preset--color--title);
+		font-weight: var(--wb-heading-weight);
+		letter-spacing: var(--wb-heading-spacing);
+		line-height: 1.25;
 	}
-	p {
-		color: var(--wp--preset--color--body) !important;
-		line-height: 1.62 !important;
+	.wp-site-blocks p {
+		color: var(--wp--preset--color--body);
+		line-height: 1.62;
 	}
-	.wp-block-post-content p {
+	.wp-site-blocks .wp-block-post-content p {
 		max-width: 68ch;
 	}
-	.wp-block-paragraph.has-lede-font-size, .bai-lede {
-		color: var(--wp--preset--color--lede) !important;
-		line-height: 1.5 !important;
-		letter-spacing: -0.01em !important;
+	.wp-site-blocks .wp-block-paragraph.has-lede-font-size, .bai-lede {
+		color: var(--wp--preset--color--lede);
+		line-height: 1.5;
+		letter-spacing: -0.01em;
 	}
-	a {
-		color: var(--wp--preset--color--secondary) !important;
-		transition: color 0.15s ease !important;
+	.wp-site-blocks a:not(#wpadminbar *) {
+		color: var(--wp--preset--color--secondary);
+		transition: color 0.15s ease;
 	}
-	a:hover {
-		color: var(--wp--preset--color--accent) !important;
+	.wp-site-blocks a:not(#wpadminbar *):hover {
+		color: var(--wp--preset--color--accent);
 	}
 	.bai-header {
 		background-color: color-mix(in srgb, var(--wp--preset--color--page) 85%, #ffffff) !important;

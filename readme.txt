@@ -36,6 +36,12 @@ No. All web fonts and palette background assets are self-hosted locally within t
 
 == Changelog ==
 
+= 1.0.1 =
+* Align block comment attributes and serialized HTML across patterns and header template part.
+* Rebuild project navigation pattern from core blocks so it can be edited in Site Editor.
+* Scope link color rules to theme content (.wp-site-blocks) to prevent restyling #wpadminbar.
+* Add screenshot.png licensing attribution to readme.txt.
+
 = 1.0.0 =
 * Initial public release on WordPress.org.
 * Full Site Editing support with 6 photo-anchored dual-tone palettes.
@@ -50,3 +56,4 @@ No. All web fonts and palette background assets are self-hosted locally within t
 * Bricolage Grotesque Font - https://github.com/at-elier/bricolage, Mathieu Triay, SIL Open Font License 1.1 (https://openfontlicense.org)
 * Palette Photography (San Diego, Stanford, Nandi, Railroad, Permafrost, Sunset) - © 2026 Surendran Balachandran, CC0 1.0 Universal (https://creativecommons.org/publicdomain/zero/1.0/) / GPLv2 or later
 * Favicon SVG - © 2026 Surendran Balachandran, GPLv2 or later
+* Theme Screenshot (screenshot.png) - © 2026 Surendran Balachandran, GNU General Public License v2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html), original theme screenshot capture.

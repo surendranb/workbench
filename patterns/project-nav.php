@@ -7,6 +7,16 @@
  * Viewport Width: 1120
  */
 ?>
-<!-- wp:group {"className":"bai-project-nav-wrap","layout":{"type":"default"}} -->
-<div class="wp-block-group bai-project-nav-wrap"></div>
+<!-- wp:group {"tagName":"nav","className":"bai-project-nav","layout":{"type":"flex","flexWrap":"wrap"}} -->
+<nav class="wp-block-group bai-project-nav">
+
+	<!-- wp:navigation {"overlayMenu":"never","className":"bai-project-nav-tabs","layout":{"type":"flex","orientation":"horizontal"}} -->
+	<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Overview', 'workbench' ); ?>","url":"#","kind":"custom","isTopLevelLink":true} /-->
+	<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Setup', 'workbench' ); ?>","url":"#","kind":"custom","isTopLevelLink":true} /-->
+	<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Docs', 'workbench' ); ?>","url":"#","kind":"custom","isTopLevelLink":true} /-->
+	<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Website ↗', 'workbench' ); ?>","url":"#","kind":"custom","isTopLevelLink":true} /-->
+	<!-- wp:navigation-link {"label":"<?php esc_html_e( 'GitHub ↗', 'workbench' ); ?>","url":"#","kind":"custom","isTopLevelLink":true} /-->
+	<!-- /wp:navigation -->
+
+</nav>
 <!-- /wp:group -->
